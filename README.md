@@ -2,6 +2,9 @@
 Sistema de gestion de Stock y Venta de Hardware de PC. 
 Implementa base de datos SQL con MySQL.
 
+* Implementado: CRUD completo gestión de Stock
+* Falta: sistema de venta
+
 # Capturas de Pantalla
 
 ### Pantalla Principal
