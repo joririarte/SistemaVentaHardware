@@ -349,7 +349,7 @@ namespace SistemaVentaHardware {
 		this->dataDB->openConnection();
 		if (this->dataDB->insertar(
 			this->txt_descripcion->Text,
-			this->txt_precio->Text,
+			this->txt_precio->Text->Replace(',', '.'),
 			this->txt_existencias->Text,
 			this->txt_minima->Text,
 			this->comboBox_tipo->SelectedIndex.ToString())) 
