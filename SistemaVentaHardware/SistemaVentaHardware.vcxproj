@@ -136,6 +136,9 @@
     <ClInclude Include="Item.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="MainPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MySQL_DB.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
@@ -145,6 +148,7 @@
     <ClCompile Include="CppCLR_WinFormsProject.cpp" />
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="MainPage.cpp" />
     <ClCompile Include="MySQL_DB.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -172,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Item.resx">
       <DependentUpon>Item.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainPage.resx">
+      <DependentUpon>MainPage.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
