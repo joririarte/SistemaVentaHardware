@@ -320,75 +320,16 @@ namespace CppCLRWinFormsProject {
 
 		}
 #pragma endregion
-	public: void updateTable() {
-		this->dataSQL->openConnection();
-		this->tabla->DataSource = this->dataSQL->getData();
-		this->dataSQL->closeConnection();
-		
-	}
-	private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->updateTable();
-	}
-private: System::Void menuStock_nuevoItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	SistemaVentaHardware::Item^ nuevoItem = gcnew SistemaVentaHardware::Item();
-	nuevoItem->btn_modificar->Visible = false;
-	nuevoItem->txt_codigo->Text = (this->tabla->RowCount + 1).ToString();
-	nuevoItem->ShowDialog();
-	this->updateTable();
-}
-private: System::Void menuStock_modificar_Click(System::Object^ sender, System::EventArgs^ e) {
-	SistemaVentaHardware::Item^ modificarItem = gcnew SistemaVentaHardware::Item();
-	modificarItem->btn_agregar->Enabled = false;
-	modificarItem->btn_agregar->Visible = false;
-	modificarItem->btn_modificar->Location = System::Drawing::Point(348, 300);
-	modificarItem->txt_codigo->Text = this->tabla->CurrentRow->Cells[0]->Value->ToString();
-	modificarItem->txt_descripcion->Text = this->tabla->CurrentRow->Cells[1]->Value->ToString();
-	modificarItem->txt_precio->Text = this->tabla->CurrentRow->Cells[2]->Value->ToString()->Replace(',', '.');
-	modificarItem->comboBox_tipo->SelectedIndex = Convert::ToInt32(this->tabla->CurrentRow->Cells[3]->Value->ToString());
-	modificarItem->txt_existencias->Text = this->tabla->CurrentRow->Cells[4]->Value->ToString();
-	modificarItem->txt_minima->Text = this->tabla->CurrentRow->Cells[5]->Value->ToString();
-	modificarItem->ShowDialog();
-	this->updateTable();
-}
-private: System::Void menuStock_Eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
-	SistemaVentaHardware::Item^ eliminararItem = gcnew SistemaVentaHardware::Item();
-	eliminararItem->btn_agregar->Visible = false;
-	eliminararItem->btn_modificar->Visible = false;
-	eliminararItem->btn_eliminar->Visible = true;
-
-	eliminararItem->txt_codigo->Enabled = true;
-	eliminararItem->txt_descripcion->Enabled = false;
-	eliminararItem->txt_precio->Enabled = false;
-	eliminararItem->txt_existencias->Enabled = false;
-	eliminararItem->txt_minima->Enabled = false;
-	eliminararItem->comboBox_tipo->Enabled = false;
-
-	eliminararItem->btn_eliminar->Location = System::Drawing::Point(348, 300);
-	eliminararItem->txt_codigo->Text = this->tabla->CurrentRow->Cells[0]->Value->ToString();
-	eliminararItem->txt_descripcion->Text = this->tabla->CurrentRow->Cells[1]->Value->ToString();
-	eliminararItem->txt_precio->Text = this->tabla->CurrentRow->Cells[2]->Value->ToString()->Replace(',', '.');
-	eliminararItem->comboBox_tipo->SelectedIndex = Convert::ToInt32(this->tabla->CurrentRow->Cells[3]->Value->ToString());
-	eliminararItem->txt_existencias->Text = this->tabla->CurrentRow->Cells[4]->Value->ToString();
-	eliminararItem->txt_minima->Text = this->tabla->CurrentRow->Cells[5]->Value->ToString();
-
-	eliminararItem->btn_cancelar->FlatAppearance->MouseOverBackColor = Color::FromArgb(192, 255, 192);
-	eliminararItem->ShowDialog();
-	this->updateTable();
-}
-private: System::Void txt_descripcion_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	DataView^ dv = this->dataSQL->getData()->DefaultView;
-	dv->RowFilter = "Descripcion LIKE '" + this->txt_descripcion->Text+"%'";
-	this->tabla->DataSource = dv;
-}
-private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	DataView^ dv = this->dataSQL->getData()->DefaultView;
-	dv->RowFilter = "Tipo =" + this->comboBox1->SelectedIndex;
-	this->tabla->DataSource = dv;
-}
-private: System::Void btn_limpiar_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->txt_descripcion->Text = "";
-	this->comboBox1->SelectedIndex = -1;
-	this->updateTable();
-}
+		//FUNCIONES
+		private: System::Void updateTable();
+		private: System::Void Item_Window(int mod);
+		//EVENTOS
+		private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {this->updateTable();}
+		private: System::Void menuStock_nuevoItem_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void menuStock_modificar_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void menuStock_Eliminar_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void txt_descripcion_TextChanged(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void btn_limpiar_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

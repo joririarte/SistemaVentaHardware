@@ -24,6 +24,11 @@ namespace SistemaVentaHardware {
 			//
 			this->dataDB = gcnew MySQL_DB();
 		}
+		Item(int modo, DataGridView^ data) {
+			InitializeComponent();
+			this->Modificar_Form(modo, data);
+			this->dataDB = gcnew MySQL_DB();
+		}
 
 	protected:
 		/// <summary>
@@ -38,22 +43,22 @@ namespace SistemaVentaHardware {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	protected:
-	public: System::Windows::Forms::TextBox^ txt_descripcion;
+	private: System::Windows::Forms::TextBox^ txt_descripcion;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
-	public: System::Windows::Forms::ComboBox^ comboBox_tipo;
+	private: System::Windows::Forms::ComboBox^ comboBox_tipo;
 	private: System::Windows::Forms::Label^ label5;
-	public: System::Windows::Forms::TextBox^ txt_precio;
-	public: System::Windows::Forms::TextBox^ txt_existencias;
-	public: System::Windows::Forms::TextBox^ txt_minima;
-	public: System::Windows::Forms::Button^ btn_agregar;
-	public: System::Windows::Forms::Button^ btn_cancelar;
+	private: System::Windows::Forms::TextBox^ txt_precio;
+	private: System::Windows::Forms::TextBox^ txt_existencias;
+	private: System::Windows::Forms::TextBox^ txt_minima;
+	private: System::Windows::Forms::Button^ btn_agregar;
+	private: System::Windows::Forms::Button^ btn_cancelar;
 	private: MySQL_DB^ dataDB;
 	private: System::Windows::Forms::Label^ label6;
-	public: System::Windows::Forms::TextBox^ txt_codigo;
-	public: System::Windows::Forms::Button^ btn_modificar;
-	public: System::Windows::Forms::Button^ btn_eliminar;
+	private: System::Windows::Forms::TextBox^ txt_codigo;
+	private: System::Windows::Forms::Button^ btn_modificar;
+	private: System::Windows::Forms::Button^ btn_eliminar;
 
 
 	public:
@@ -345,52 +350,14 @@ namespace SistemaVentaHardware {
 
 		}
 #pragma endregion
-	private: System::Void btn_agregar_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->dataDB->openConnection();
-		if (this->dataDB->insertar(
-			this->txt_descripcion->Text,
-			this->txt_precio->Text->Replace(',', '.'),
-			this->txt_existencias->Text,
-			this->txt_minima->Text,
-			this->comboBox_tipo->SelectedIndex.ToString())) 
-		{
-			MessageBox::Show(L"Item ingresado exitosamente");
-			this->dataDB->closeConnection();
-			this->Close();
-		}
-		this->dataDB->closeConnection();
-	}
-private: System::Void btn_cancelar_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-}
-private: System::Void btn_modificar_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->dataDB->openConnection();
-	if (this->dataDB->modificar(
-		this->txt_codigo->Text,
-		this->txt_descripcion->Text,
-		this->txt_precio->Text,
-		this->txt_existencias->Text,
-		this->txt_minima->Text,
-		this->comboBox_tipo->SelectedIndex.ToString())) 
-	{
-		MessageBox::Show(L"Item modificado exitosamente");
-		this->dataDB->closeConnection();
-		this->Close();
-	}
-	this->dataDB->closeConnection();
-}
-private: System::Void btn_eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
-	auto result = MessageBox::Show(L"Está a punto de BORRAR un registro! \n\nEsta acción NO SE PUEDE deshacer", 
-									L"Atención!", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning);
-	if (result == System::Windows::Forms::DialogResult::OK) {
-		this->dataDB->openConnection();
-		if (this->dataDB->eliminar(this->txt_codigo->Text)) {
-			MessageBox::Show(L"Item eliminado exitosamente");
-			this->dataDB->closeConnection();
-			this->Close();
-		}
-		this->dataDB->closeConnection();
-	}
-}
+		//FUNCIONES
+		private: System::Void Modificar_Form(int mod, DataGridView^ data);
+		private: System::Void Llenar_Inputs(DataGridView^ data);
+
+	   //EVENTOS
+		private: System::Void btn_agregar_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void btn_cancelar_Click(System::Object^ sender, System::EventArgs^ e) {this->Close();}
+		private: System::Void btn_modificar_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void btn_eliminar_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
