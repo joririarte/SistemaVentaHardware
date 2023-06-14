@@ -9,12 +9,23 @@ MySQL_DB::MySQL_DB()
 
 DataTable^ MySQL_DB::getData()
 {
-    String^ sql = "select * from stock";
+    String^ sql = "call Listar_Items()";
     MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
     MySqlDataAdapter^ data = gcnew MySqlDataAdapter(cursor);
     DataTable^ tabla = gcnew DataTable();
     data->Fill(tabla);
     return tabla;
+}
+
+
+DataTable^ MySQL_DB::getTipos()
+{
+    String^ sql = "call Listar_Tipos()";
+    MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
+    MySqlDataAdapter^ data = gcnew MySqlDataAdapter(cursor);
+    DataTable^ tipos = gcnew DataTable();
+    data->Fill(tipos);
+    return tipos;
 }
 
 void MySQL_DB::openConnection()
@@ -29,7 +40,7 @@ void MySQL_DB::closeConnection()
 
 bool MySQL_DB::insertar(String^ descr, String^ precio, String^ existencia, String^ minima, String^ tipo)
 {
-    String^ sql = "insert into stock(Descripcion, Precio, Existencias,Minima,tipo) values('" + descr + "'," + precio + "," + existencia + "," + minima + "," + tipo+")";
+    String^ sql = "call Insertar_Item('" + descr + "'," + precio + "," + existencia + "," + minima + "," + tipo+")";
     MySqlCommand^ cursor = gcnew MySqlCommand(sql,this->conn);
     try
     {

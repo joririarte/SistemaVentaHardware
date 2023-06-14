@@ -12,6 +12,7 @@ private:
 public:
 	MySQL_DB();
 	DataTable^ getData();
+	DataTable^ getTipos();
 	void openConnection();
 	void closeConnection();
 	bool insertar(String^ descr,String^ precio, String^ existencia, String^ minima, String^ tipo);

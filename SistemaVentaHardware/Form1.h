@@ -73,9 +73,9 @@ namespace CppCLRWinFormsProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->stockToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStock_nuevoItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -99,7 +99,8 @@ namespace CppCLRWinFormsProject {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->stockToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1089, 36);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(817, 29);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -113,7 +114,7 @@ namespace CppCLRWinFormsProject {
 			this->stockToolStripMenuItem->ForeColor = System::Drawing::SystemColors::Control;
 			this->stockToolStripMenuItem->ImageTransparentColor = System::Drawing::SystemColors::ControlDark;
 			this->stockToolStripMenuItem->Name = L"stockToolStripMenuItem";
-			this->stockToolStripMenuItem->Size = System::Drawing::Size(74, 32);
+			this->stockToolStripMenuItem->Size = System::Drawing::Size(59, 25);
 			this->stockToolStripMenuItem->Text = L"Stock";
 			// 
 			// menuStock_nuevoItem
@@ -123,7 +124,7 @@ namespace CppCLRWinFormsProject {
 			this->menuStock_nuevoItem->Name = L"menuStock_nuevoItem";
 			this->menuStock_nuevoItem->ShortcutKeyDisplayString = L"";
 			this->menuStock_nuevoItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::N));
-			this->menuStock_nuevoItem->Size = System::Drawing::Size(272, 32);
+			this->menuStock_nuevoItem->Size = System::Drawing::Size(219, 26);
 			this->menuStock_nuevoItem->Text = L"Nuevo Item";
 			this->menuStock_nuevoItem->Click += gcnew System::EventHandler(this, &Form1::menuStock_nuevoItem_Click);
 			// 
@@ -133,7 +134,7 @@ namespace CppCLRWinFormsProject {
 			this->menuStock_modificar->ForeColor = System::Drawing::SystemColors::Control;
 			this->menuStock_modificar->Name = L"menuStock_modificar";
 			this->menuStock_modificar->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::M));
-			this->menuStock_modificar->Size = System::Drawing::Size(272, 32);
+			this->menuStock_modificar->Size = System::Drawing::Size(219, 26);
 			this->menuStock_modificar->Text = L"Modificar";
 			this->menuStock_modificar->Click += gcnew System::EventHandler(this, &Form1::menuStock_modificar_Click);
 			// 
@@ -143,7 +144,7 @@ namespace CppCLRWinFormsProject {
 			this->menuStock_Eliminar->ForeColor = System::Drawing::SystemColors::Control;
 			this->menuStock_Eliminar->Name = L"menuStock_Eliminar";
 			this->menuStock_Eliminar->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::D));
-			this->menuStock_Eliminar->Size = System::Drawing::Size(272, 32);
+			this->menuStock_Eliminar->Size = System::Drawing::Size(219, 26);
 			this->menuStock_Eliminar->Text = L"Eliminar";
 			this->menuStock_Eliminar->Click += gcnew System::EventHandler(this, &Form1::menuStock_Eliminar_Click);
 			// 
@@ -153,48 +154,47 @@ namespace CppCLRWinFormsProject {
 			this->tabla->AllowUserToAddRows = false;
 			this->tabla->AllowUserToDeleteRows = false;
 			this->tabla->AllowUserToResizeRows = false;
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Desktop;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->tabla->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::ControlDarkDark;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11));
+			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::Desktop;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->tabla->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
 			this->tabla->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->tabla->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->tabla->BackgroundColor = System::Drawing::SystemColors::ControlDark;
 			this->tabla->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->tabla->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::ControlDark;
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::ControlDarkDark;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->tabla->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::ControlDarkDark;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->tabla->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this->tabla->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle6->BackColor = System::Drawing::SystemColors::ControlDark;
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->tabla->DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->tabla->DefaultCellStyle = dataGridViewCellStyle6;
 			this->tabla->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->tabla->Location = System::Drawing::Point(13, 100);
-			this->tabla->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tabla->Location = System::Drawing::Point(10, 81);
 			this->tabla->Name = L"tabla";
 			this->tabla->ReadOnly = true;
 			this->tabla->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->tabla->RowHeadersVisible = false;
 			this->tabla->RowHeadersWidth = 51;
 			this->tabla->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->tabla->Size = System::Drawing::Size(1063, 568);
+			this->tabla->Size = System::Drawing::Size(797, 462);
 			this->tabla->TabIndex = 1;
 			// 
 			// label2
@@ -202,10 +202,9 @@ namespace CppCLRWinFormsProject {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(17, 43);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(13, 35);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(141, 29);
+			this->label2->Size = System::Drawing::Size(110, 24);
 			this->label2->TabIndex = 5;
 			this->label2->Text = L"Descripción";
 			// 
@@ -213,11 +212,10 @@ namespace CppCLRWinFormsProject {
 			// 
 			this->txt_descripcion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txt_descripcion->Location = System::Drawing::Point(172, 39);
-			this->txt_descripcion->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txt_descripcion->Location = System::Drawing::Point(129, 32);
 			this->txt_descripcion->MaxLength = 20;
 			this->txt_descripcion->Name = L"txt_descripcion";
-			this->txt_descripcion->Size = System::Drawing::Size(220, 34);
+			this->txt_descripcion->Size = System::Drawing::Size(166, 29);
 			this->txt_descripcion->TabIndex = 4;
 			this->txt_descripcion->TextChanged += gcnew System::EventHandler(this, &Form1::txt_descripcion_TextChanged);
 			// 
@@ -226,11 +224,9 @@ namespace CppCLRWinFormsProject {
 			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Procesador", L"Motherboard", L"RAM", L"Placa de Video" });
-			this->comboBox1->Location = System::Drawing::Point(515, 39);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->comboBox1->Location = System::Drawing::Point(386, 32);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(227, 37);
+			this->comboBox1->Size = System::Drawing::Size(171, 32);
 			this->comboBox1->TabIndex = 6;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox1_SelectedIndexChanged);
 			// 
@@ -239,10 +235,9 @@ namespace CppCLRWinFormsProject {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(423, 43);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(317, 35);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(63, 29);
+			this->label1->Size = System::Drawing::Size(48, 24);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"Tipo";
 			// 
@@ -252,10 +247,9 @@ namespace CppCLRWinFormsProject {
 			this->btn_limpiar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_limpiar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btn_limpiar->Location = System::Drawing::Point(755, 30);
-			this->btn_limpiar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_limpiar->Location = System::Drawing::Point(566, 24);
 			this->btn_limpiar->Name = L"btn_limpiar";
-			this->btn_limpiar->Size = System::Drawing::Size(127, 57);
+			this->btn_limpiar->Size = System::Drawing::Size(95, 46);
 			this->btn_limpiar->TabIndex = 8;
 			this->btn_limpiar->Text = L"Limpiar";
 			this->btn_limpiar->UseVisualStyleBackColor = true;
@@ -263,10 +257,10 @@ namespace CppCLRWinFormsProject {
 			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			this->ClientSize = System::Drawing::Size(1089, 681);
+			this->ClientSize = System::Drawing::Size(817, 553);
 			this->Controls->Add(this->btn_limpiar);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->comboBox1);
@@ -276,7 +270,6 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->menuStrip1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"Form1";
 			this->Text = L"Stock y Venta Hardware";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
@@ -290,9 +283,10 @@ namespace CppCLRWinFormsProject {
 #pragma endregion
 		//FUNCIONES
 		private: System::Void updateTable();
+			   private: System::Void updateComboBox_Tipos();
 		private: System::Void Item_Window(int mod);
 		//EVENTOS
-		private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {this->updateTable();}
+		private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void menuStock_nuevoItem_Click(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void menuStock_modificar_Click(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void menuStock_Eliminar_Click(System::Object^ sender, System::EventArgs^ e);
