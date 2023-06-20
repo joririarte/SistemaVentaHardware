@@ -93,3 +93,13 @@ bool MySQL_DB::eliminar(String^ cod)
     }
     return false;
 }
+
+DataTable^ MySQL_DB::getCarrito(String^ venta_id)
+{
+    String^ sql = "call Listar_Carrito(" + venta_id + ")";
+    MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
+    MySqlDataAdapter^ data = gcnew MySqlDataAdapter(cursor);
+    DataTable^ tabla = gcnew DataTable();
+    data->Fill(tabla);
+    return tabla;
+}

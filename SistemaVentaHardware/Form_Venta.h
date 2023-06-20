@@ -37,6 +37,7 @@ namespace SistemaVentaHardware {
 			}
 		}
 	private: MySQL_DB^ dataSQL;
+	private: int tab_state = 1;
 
 
 	private: System::Windows::Forms::Button^ btn_limpiar;
@@ -54,15 +55,21 @@ namespace SistemaVentaHardware {
 	private: System::Windows::Forms::ToolStripMenuItem^ ventaPresupuestoToolStripMenuItem;
 	private: System::Windows::Forms::DataGridView^ DGV_items;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ txt_venta_id;
+
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ txt_venta_monto;
+
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ txt_venta_estado;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ nuevaVentaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ buscarVentaToolStripMenuItem;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ btn_tab_items;
+	private: System::Windows::Forms::Button^ btn_tab_carrito;
+
+
+
 
 	protected:
 
@@ -94,18 +101,18 @@ namespace SistemaVentaHardware {
 			this->btn_agregar_carrito = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->accionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->nuevaVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->buscarVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ventaPresupuestoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->DGV_items = (gcnew System::Windows::Forms::DataGridView());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->txt_venta_id = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->txt_venta_monto = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->nuevaVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->buscarVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->txt_venta_estado = (gcnew System::Windows::Forms::TextBox());
+			this->btn_tab_items = (gcnew System::Windows::Forms::Button());
+			this->btn_tab_carrito = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_items))->BeginInit();
 			this->SuspendLayout();
@@ -224,6 +231,20 @@ namespace SistemaVentaHardware {
 			this->accionesToolStripMenuItem->Size = System::Drawing::Size(83, 25);
 			this->accionesToolStripMenuItem->Text = L"Acciones";
 			// 
+			// nuevaVentaToolStripMenuItem
+			// 
+			this->nuevaVentaToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->nuevaVentaToolStripMenuItem->Name = L"nuevaVentaToolStripMenuItem";
+			this->nuevaVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
+			this->nuevaVentaToolStripMenuItem->Text = L"Nueva Venta";
+			// 
+			// buscarVentaToolStripMenuItem
+			// 
+			this->buscarVentaToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->buscarVentaToolStripMenuItem->Name = L"buscarVentaToolStripMenuItem";
+			this->buscarVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
+			this->buscarVentaToolStripMenuItem->Text = L"Buscar Venta";
+			// 
 			// ventaPresupuestoToolStripMenuItem
 			// 
 			this->ventaPresupuestoToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
@@ -291,18 +312,18 @@ namespace SistemaVentaHardware {
 			this->label4->TabIndex = 22;
 			this->label4->Text = L"ID Venta";
 			// 
-			// textBox1
+			// txt_venta_id
 			// 
-			this->textBox1->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->textBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->textBox1->Enabled = false;
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txt_venta_id->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->txt_venta_id->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->txt_venta_id->Enabled = false;
+			this->txt_venta_id->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(647, 36);
-			this->textBox1->MaxLength = 20;
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(171, 29);
-			this->textBox1->TabIndex = 21;
+			this->txt_venta_id->Location = System::Drawing::Point(647, 36);
+			this->txt_venta_id->MaxLength = 20;
+			this->txt_venta_id->Name = L"txt_venta_id";
+			this->txt_venta_id->Size = System::Drawing::Size(171, 29);
+			this->txt_venta_id->TabIndex = 21;
 			// 
 			// label5
 			// 
@@ -315,18 +336,18 @@ namespace SistemaVentaHardware {
 			this->label5->TabIndex = 20;
 			this->label5->Text = L"Monto";
 			// 
-			// textBox2
+			// txt_venta_monto
 			// 
-			this->textBox2->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->textBox2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->textBox2->Enabled = false;
-			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txt_venta_monto->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->txt_venta_monto->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->txt_venta_monto->Enabled = false;
+			this->txt_venta_monto->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox2->Location = System::Drawing::Point(647, 71);
-			this->textBox2->MaxLength = 20;
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(171, 29);
-			this->textBox2->TabIndex = 19;
+			this->txt_venta_monto->Location = System::Drawing::Point(647, 71);
+			this->txt_venta_monto->MaxLength = 20;
+			this->txt_venta_monto->Name = L"txt_venta_monto";
+			this->txt_venta_monto->Size = System::Drawing::Size(171, 29);
+			this->txt_venta_monto->TabIndex = 19;
 			// 
 			// label6
 			// 
@@ -339,60 +360,48 @@ namespace SistemaVentaHardware {
 			this->label6->TabIndex = 24;
 			this->label6->Text = L"Estado";
 			// 
-			// textBox3
+			// txt_venta_estado
 			// 
-			this->textBox3->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->textBox3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->textBox3->Enabled = false;
-			this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txt_venta_estado->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->txt_venta_estado->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->txt_venta_estado->Enabled = false;
+			this->txt_venta_estado->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox3->Location = System::Drawing::Point(647, 106);
-			this->textBox3->MaxLength = 20;
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(171, 29);
-			this->textBox3->TabIndex = 23;
+			this->txt_venta_estado->Location = System::Drawing::Point(647, 106);
+			this->txt_venta_estado->MaxLength = 20;
+			this->txt_venta_estado->Name = L"txt_venta_estado";
+			this->txt_venta_estado->Size = System::Drawing::Size(171, 29);
+			this->txt_venta_estado->TabIndex = 23;
 			// 
-			// nuevaVentaToolStripMenuItem
+			// btn_tab_items
 			// 
-			this->nuevaVentaToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->nuevaVentaToolStripMenuItem->Name = L"nuevaVentaToolStripMenuItem";
-			this->nuevaVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
-			this->nuevaVentaToolStripMenuItem->Text = L"Nueva Venta";
-			// 
-			// buscarVentaToolStripMenuItem
-			// 
-			this->buscarVentaToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->buscarVentaToolStripMenuItem->Name = L"buscarVentaToolStripMenuItem";
-			this->buscarVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
-			this->buscarVentaToolStripMenuItem->Text = L"Buscar Venta";
-			// 
-			// button1
-			// 
-			this->button1->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->button1->FlatAppearance->BorderSize = 0;
-			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btn_tab_items->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->btn_tab_items->FlatAppearance->BorderSize = 0;
+			this->btn_tab_items->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_tab_items->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(9, 189);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(95, 36);
-			this->button1->TabIndex = 25;
-			this->button1->Text = L"ITEMS";
-			this->button1->UseVisualStyleBackColor = false;
+			this->btn_tab_items->Location = System::Drawing::Point(9, 189);
+			this->btn_tab_items->Name = L"btn_tab_items";
+			this->btn_tab_items->Size = System::Drawing::Size(95, 36);
+			this->btn_tab_items->TabIndex = 25;
+			this->btn_tab_items->Text = L"ITEMS";
+			this->btn_tab_items->UseVisualStyleBackColor = false;
+			this->btn_tab_items->Click += gcnew System::EventHandler(this, &Form_Venta::btn_tab_items_Click);
 			// 
-			// button2
+			// btn_tab_carrito
 			// 
-			this->button2->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			this->button2->FlatAppearance->BorderSize = 0;
-			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btn_tab_carrito->BackColor = System::Drawing::SystemColors::ControlDarkDark;
+			this->btn_tab_carrito->FlatAppearance->BorderSize = 0;
+			this->btn_tab_carrito->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_tab_carrito->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(104, 189);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(95, 36);
-			this->button2->TabIndex = 26;
-			this->button2->Text = L"ITEMS";
-			this->button2->UseVisualStyleBackColor = false;
+			this->btn_tab_carrito->Location = System::Drawing::Point(104, 189);
+			this->btn_tab_carrito->Name = L"btn_tab_carrito";
+			this->btn_tab_carrito->Size = System::Drawing::Size(101, 36);
+			this->btn_tab_carrito->TabIndex = 26;
+			this->btn_tab_carrito->Text = L"CARRITO";
+			this->btn_tab_carrito->UseVisualStyleBackColor = false;
+			this->btn_tab_carrito->Click += gcnew System::EventHandler(this, &Form_Venta::btn_tab_carrito_Click);
 			// 
 			// Form_Venta
 			// 
@@ -400,14 +409,14 @@ namespace SistemaVentaHardware {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
 			this->ClientSize = System::Drawing::Size(830, 592);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->btn_tab_carrito);
+			this->Controls->Add(this->btn_tab_items);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->textBox3);
+			this->Controls->Add(this->txt_venta_estado);
 			this->Controls->Add(this->label4);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->txt_venta_id);
 			this->Controls->Add(this->label5);
-			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->txt_venta_monto);
 			this->Controls->Add(this->DGV_items);
 			this->Controls->Add(this->btn_agregar_carrito);
 			this->Controls->Add(this->label3);
@@ -431,9 +440,13 @@ namespace SistemaVentaHardware {
 
 		}
 #pragma endregion
-		private: System::Void updateTable();
-	private: System::Void Form_Venta_Load(System::Object^ sender, System::EventArgs^ e);
-private: System::Void btn_limpiar_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+		//	FUNCIONES
+		private: System::Void updateTable(int);
+		
+		//EVENTOS
+		private: System::Void Form_Venta_Load(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void btn_limpiar_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void btn_tab_items_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void btn_tab_carrito_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

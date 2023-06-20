@@ -15,8 +15,11 @@ public:
 	DataTable^ getTipos();
 	void openConnection();
 	void closeConnection();
+	//ITEMS - STOCK
 	bool insertar(String^ descr,String^ precio, String^ existencia, String^ minima, String^ tipo);
 	bool modificar(String^ cod, String^ descr, String^ precio, String^ existencia, String^ minima, String^ tipo);
 	bool eliminar(String^ cod);
+	//VENTAS - CARRITO
+	DataTable^ getCarrito(String^);
 };
 
