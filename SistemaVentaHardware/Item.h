@@ -24,9 +24,9 @@ namespace SistemaVentaHardware {
 			//
 			this->dataDB = gcnew MySQL_DB();
 		}
-		Item(int modo, DataGridView^ data) {
+		Item(int modo, DataGridView^ data,DataTable^ tipos) {
 			InitializeComponent();
-			this->Modificar_Form(modo, data);
+			this->Modificar_Form(modo, data, tipos);
 			this->dataDB = gcnew MySQL_DB();
 		}
 
@@ -344,6 +344,7 @@ namespace SistemaVentaHardware {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->txt_descripcion);
 			this->Name = L"Item";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"Item";
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -351,8 +352,9 @@ namespace SistemaVentaHardware {
 		}
 #pragma endregion
 		//FUNCIONES
-		private: System::Void Modificar_Form(int mod, DataGridView^ data);
+		private: System::Void Modificar_Form(int mod, DataGridView^ data,DataTable^ tipos);
 		private: System::Void Llenar_Inputs(DataGridView^ data);
+			   private: System::Void Update_Combobox_Tipos(DataTable^ tipos);
 
 	   //EVENTOS
 		private: System::Void btn_agregar_Click(System::Object^ sender, System::EventArgs^ e);

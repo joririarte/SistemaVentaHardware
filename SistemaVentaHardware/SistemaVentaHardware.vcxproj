@@ -133,6 +133,9 @@
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Form_Venta.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Item.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -147,6 +150,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CppCLR_WinFormsProject.cpp" />
     <ClCompile Include="Form1.cpp" />
+    <ClCompile Include="Form_Venta.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MainPage.cpp" />
     <ClCompile Include="MySQL_DB.cpp" />
@@ -173,6 +177,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Venta.resx">
+      <DependentUpon>Form_Venta.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Item.resx">
       <DependentUpon>Item.h</DependentUpon>

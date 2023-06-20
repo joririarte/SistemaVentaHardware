@@ -11,7 +11,8 @@ System::Void CppCLRWinFormsProject::Form1::updateTable()
 System::Void CppCLRWinFormsProject::Form1::updateComboBox_Tipos()
 {
 	this->dataSQL->openConnection();
-	this->comboBox1->DataSource = this->dataSQL->getTipos();
+	this->tipos = this->dataSQL->getTipos();
+	this->comboBox1->DataSource = this->tipos;
 	this->comboBox1->ValueMember = "tipo_id";
 	this->comboBox1->DisplayMember = "tipo_nombre";
 	this->dataSQL->closeConnection();
@@ -19,7 +20,7 @@ System::Void CppCLRWinFormsProject::Form1::updateComboBox_Tipos()
 
 System::Void CppCLRWinFormsProject::Form1::Item_Window(int mod)
 {
-	SistemaVentaHardware::Item^ nueva_ventana_Item = gcnew SistemaVentaHardware::Item(mod, this->tabla);
+	SistemaVentaHardware::Item^ nueva_ventana_Item = gcnew SistemaVentaHardware::Item(mod, this->tabla,this->tipos);
 	nueva_ventana_Item->ShowDialog();
 	this->updateTable();
 }

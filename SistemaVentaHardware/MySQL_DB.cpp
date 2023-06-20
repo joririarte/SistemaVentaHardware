@@ -40,7 +40,7 @@ void MySQL_DB::closeConnection()
 
 bool MySQL_DB::insertar(String^ descr, String^ precio, String^ existencia, String^ minima, String^ tipo)
 {
-    String^ sql = "call Insertar_Item('" + descr + "'," + precio + "," + existencia + "," + minima + "," + tipo+")";
+    String^ sql = "call Insertar_Item('" + descr + "'," + precio + "," + tipo + "," + existencia + "," + minima + ")";
     MySqlCommand^ cursor = gcnew MySqlCommand(sql,this->conn);
     try
     {
@@ -59,7 +59,7 @@ bool MySQL_DB::insertar(String^ descr, String^ precio, String^ existencia, Strin
 
 bool MySQL_DB::modificar(String^ cod, String^ descr, String^ precio, String^ existencia, String^ minima, String^ tipo)
 {
-    String^ sql = "update stock set Descripcion='" + descr + "', Precio=" + precio + ", Existencias=" + existencia + ", Minima=" + minima + ", Tipo=" + tipo + " where Codigo=" + cod;
+    String^ sql = "call Modificar_Item(" + cod + ",'" + descr + "', " + precio + ", " + tipo + "," + existencia + ", " + minima + ")";
     MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
     try
     {
@@ -77,7 +77,7 @@ bool MySQL_DB::modificar(String^ cod, String^ descr, String^ precio, String^ exi
 
 bool MySQL_DB::eliminar(String^ cod)
 {
-    String^ sql = "delete from stock where Codigo=" + cod;
+    String^ sql = "call Eliminar_Item(" + cod + ")";
     MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
     try
     {

@@ -1,5 +1,6 @@
 #pragma once
 #include "Form1.h"
+#include "Form_Venta.h"
 
 namespace SistemaVentaHardware {
 
@@ -92,6 +93,7 @@ namespace SistemaVentaHardware {
 			this->btn_venta->TabIndex = 1;
 			this->btn_venta->Text = L"Venta";
 			this->btn_venta->UseVisualStyleBackColor = false;
+			this->btn_venta->Click += gcnew System::EventHandler(this, &MainPage::btn_venta_Click);
 			// 
 			// btn_stock
 			// 
@@ -168,8 +170,11 @@ namespace SistemaVentaHardware {
 	private: System::Void btn_stock_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->AbrirPanel(gcnew CppCLRWinFormsProject::Form1);
 	}
-private: System::Void MainPage_Load(System::Object^ sender, System::EventArgs^ e) {
-	this->AbrirPanel(gcnew CppCLRWinFormsProject::Form1);
-}
+	private: System::Void MainPage_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->AbrirPanel(gcnew CppCLRWinFormsProject::Form1);
+	}
+	private: System::Void btn_venta_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->AbrirPanel(gcnew SistemaVentaHardware::Form_Venta);
+	}
 };
 }

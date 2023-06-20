@@ -49,6 +49,7 @@ namespace CppCLRWinFormsProject {
 
 
 	private: System::Windows::Forms::DataGridView^ tabla;
+	private: DataTable^ tipos;
 
 	private: MySQL_DB^ dataSQL;
 
@@ -100,9 +101,9 @@ namespace CppCLRWinFormsProject {
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(817, 29);
+			this->menuStrip1->Size = System::Drawing::Size(830, 29);
 			this->menuStrip1->TabIndex = 0;
-			this->menuStrip1->Text = L"menuStrip1";
+			this->menuStrip1->Text = L"hola";
 			// 
 			// stockToolStripMenuItem
 			// 
@@ -111,16 +112,16 @@ namespace CppCLRWinFormsProject {
 				this->menuStock_nuevoItem,
 					this->menuStock_modificar, this->menuStock_Eliminar
 			});
-			this->stockToolStripMenuItem->ForeColor = System::Drawing::SystemColors::Control;
+			this->stockToolStripMenuItem->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->stockToolStripMenuItem->ImageTransparentColor = System::Drawing::SystemColors::ControlDark;
 			this->stockToolStripMenuItem->Name = L"stockToolStripMenuItem";
-			this->stockToolStripMenuItem->Size = System::Drawing::Size(59, 25);
-			this->stockToolStripMenuItem->Text = L"Stock";
+			this->stockToolStripMenuItem->Size = System::Drawing::Size(83, 25);
+			this->stockToolStripMenuItem->Text = L"Acciones";
 			// 
 			// menuStock_nuevoItem
 			// 
 			this->menuStock_nuevoItem->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->menuStock_nuevoItem->ForeColor = System::Drawing::SystemColors::Control;
+			this->menuStock_nuevoItem->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->menuStock_nuevoItem->Name = L"menuStock_nuevoItem";
 			this->menuStock_nuevoItem->ShortcutKeyDisplayString = L"";
 			this->menuStock_nuevoItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::N));
@@ -131,7 +132,7 @@ namespace CppCLRWinFormsProject {
 			// menuStock_modificar
 			// 
 			this->menuStock_modificar->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->menuStock_modificar->ForeColor = System::Drawing::SystemColors::Control;
+			this->menuStock_modificar->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->menuStock_modificar->Name = L"menuStock_modificar";
 			this->menuStock_modificar->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::M));
 			this->menuStock_modificar->Size = System::Drawing::Size(219, 26);
@@ -141,7 +142,7 @@ namespace CppCLRWinFormsProject {
 			// menuStock_Eliminar
 			// 
 			this->menuStock_Eliminar->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->menuStock_Eliminar->ForeColor = System::Drawing::SystemColors::Control;
+			this->menuStock_Eliminar->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->menuStock_Eliminar->Name = L"menuStock_Eliminar";
 			this->menuStock_Eliminar->ShortcutKeys = static_cast<System::Windows::Forms::Keys>((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::D));
 			this->menuStock_Eliminar->Size = System::Drawing::Size(219, 26);
@@ -194,7 +195,7 @@ namespace CppCLRWinFormsProject {
 			this->tabla->RowHeadersVisible = false;
 			this->tabla->RowHeadersWidth = 51;
 			this->tabla->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->tabla->Size = System::Drawing::Size(797, 462);
+			this->tabla->Size = System::Drawing::Size(808, 499);
 			this->tabla->TabIndex = 1;
 			// 
 			// label2
@@ -260,7 +261,7 @@ namespace CppCLRWinFormsProject {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			this->ClientSize = System::Drawing::Size(817, 553);
+			this->ClientSize = System::Drawing::Size(830, 592);
 			this->Controls->Add(this->btn_limpiar);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->comboBox1);

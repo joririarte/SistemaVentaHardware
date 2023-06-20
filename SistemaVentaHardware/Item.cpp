@@ -2,19 +2,22 @@
 #include "Item.h"
 
 //cambia los botones y rellena el formulario con los datos de una tabla segun un modo
-System::Void SistemaVentaHardware::Item::Modificar_Form(int mod, DataGridView^ data)
+System::Void SistemaVentaHardware::Item::Modificar_Form(int mod, DataGridView^ data, DataTable^ tipos)
 {
 	switch (mod)
 	{
 	case 1: //Nuevo Item
 		this->btn_modificar->Visible = false;
 		this->txt_codigo->Text = (data->RowCount + 1).ToString();
+		this->Update_Combobox_Tipos(tipos);
+		this->comboBox_tipo->SelectedIndex = -1;
 		break;
 	case 2: //Modificar Item
 		this->btn_agregar->Enabled = false;
 		this->btn_agregar->Visible = false;
 		this->btn_modificar->Location = System::Drawing::Point(348, 300);
 
+		this->Update_Combobox_Tipos(tipos);
 		this->Llenar_Inputs(data);
 		break;
 	case 3: //Eliminar Item
@@ -30,9 +33,11 @@ System::Void SistemaVentaHardware::Item::Modificar_Form(int mod, DataGridView^ d
 		this->btn_eliminar->Location = System::Drawing::Point(348, 300);
 		this->btn_cancelar->FlatAppearance->MouseOverBackColor = Color::FromArgb(192, 255, 192);
 
+		this->Update_Combobox_Tipos(tipos);
 		this->Llenar_Inputs(data);
 		break;
 	}
+	
 }
 
 //llena los inputs
@@ -41,9 +46,16 @@ System::Void SistemaVentaHardware::Item::Llenar_Inputs(DataGridView^ data)
 	this->txt_codigo->Text = data->CurrentRow->Cells[0]->Value->ToString();
 	this->txt_descripcion->Text = data->CurrentRow->Cells[1]->Value->ToString();
 	this->txt_precio->Text = data->CurrentRow->Cells[2]->Value->ToString()->Replace(',', '.');
-	this->comboBox_tipo->SelectedIndex = Convert::ToInt32(data->CurrentRow->Cells[3]->Value->ToString());
+	this->comboBox_tipo->Text = data->CurrentRow->Cells[3]->Value->ToString();
 	this->txt_existencias->Text = data->CurrentRow->Cells[4]->Value->ToString();
 	this->txt_minima->Text = data->CurrentRow->Cells[5]->Value->ToString();
+}
+
+System::Void SistemaVentaHardware::Item::Update_Combobox_Tipos(DataTable^ tipos)
+{
+	this->comboBox_tipo->DataSource = tipos;
+	this->comboBox_tipo->ValueMember = "tipo_id";
+	this->comboBox_tipo->DisplayMember = "tipo_nombre";
 }
 
 System::Void SistemaVentaHardware::Item::btn_agregar_Click(System::Object^ sender, System::EventArgs^ e)
@@ -54,7 +66,7 @@ System::Void SistemaVentaHardware::Item::btn_agregar_Click(System::Object^ sende
 		this->txt_precio->Text->Replace(',', '.'),
 		this->txt_existencias->Text,
 		this->txt_minima->Text,
-		this->comboBox_tipo->SelectedIndex.ToString()))
+		this->comboBox_tipo->SelectedValue->ToString()))
 	{
 		MessageBox::Show(L"Item ingresado exitosamente");
 		this->dataDB->closeConnection();
@@ -72,7 +84,7 @@ System::Void SistemaVentaHardware::Item::btn_modificar_Click(System::Object^ sen
 		this->txt_precio->Text,
 		this->txt_existencias->Text,
 		this->txt_minima->Text,
-		this->comboBox_tipo->SelectedIndex.ToString()))
+		this->comboBox_tipo->SelectedValue->ToString()))
 	{
 		MessageBox::Show(L"Item modificado exitosamente");
 		this->dataDB->closeConnection();
