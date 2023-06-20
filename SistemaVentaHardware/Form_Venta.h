@@ -50,7 +50,7 @@ namespace SistemaVentaHardware {
 	private: System::Windows::Forms::Button^ btn_agregar_carrito;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ accionesToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ verCarritoToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ ventaPresupuestoToolStripMenuItem;
 	private: System::Windows::Forms::DataGridView^ DGV_items;
 	private: System::Windows::Forms::Label^ label4;
@@ -60,6 +60,9 @@ namespace SistemaVentaHardware {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::ToolStripMenuItem^ nuevaVentaToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ buscarVentaToolStripMenuItem;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
 
 	protected:
 
@@ -78,9 +81,9 @@ namespace SistemaVentaHardware {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle11 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle12 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->btn_limpiar = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->comboBox_tipo = (gcnew System::Windows::Forms::ComboBox());
@@ -91,7 +94,6 @@ namespace SistemaVentaHardware {
 			this->btn_agregar_carrito = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->accionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->verCarritoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ventaPresupuestoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->DGV_items = (gcnew System::Windows::Forms::DataGridView());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -101,6 +103,9 @@ namespace SistemaVentaHardware {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->nuevaVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->buscarVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_items))->BeginInit();
 			this->SuspendLayout();
@@ -212,19 +217,12 @@ namespace SistemaVentaHardware {
 			this->accionesToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDarkDark;
 			this->accionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->nuevaVentaToolStripMenuItem,
-					this->verCarritoToolStripMenuItem, this->ventaPresupuestoToolStripMenuItem
+					this->buscarVentaToolStripMenuItem, this->ventaPresupuestoToolStripMenuItem
 			});
 			this->accionesToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12));
 			this->accionesToolStripMenuItem->Name = L"accionesToolStripMenuItem";
 			this->accionesToolStripMenuItem->Size = System::Drawing::Size(83, 25);
 			this->accionesToolStripMenuItem->Text = L"Acciones";
-			// 
-			// verCarritoToolStripMenuItem
-			// 
-			this->verCarritoToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->verCarritoToolStripMenuItem->Name = L"verCarritoToolStripMenuItem";
-			this->verCarritoToolStripMenuItem->Size = System::Drawing::Size(209, 26);
-			this->verCarritoToolStripMenuItem->Text = L"Ver Carrito";
 			// 
 			// ventaPresupuestoToolStripMenuItem
 			// 
@@ -239,47 +237,47 @@ namespace SistemaVentaHardware {
 			this->DGV_items->AllowUserToAddRows = false;
 			this->DGV_items->AllowUserToDeleteRows = false;
 			this->DGV_items->AllowUserToResizeRows = false;
-			dataGridViewCellStyle10->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle10->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			dataGridViewCellStyle10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11));
-			dataGridViewCellStyle10->ForeColor = System::Drawing::SystemColors::Desktop;
-			dataGridViewCellStyle10->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle10->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle10->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DGV_items->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::ControlDarkDark;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11));
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Desktop;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DGV_items->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this->DGV_items->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->DGV_items->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->DGV_items->BackgroundColor = System::Drawing::SystemColors::ControlDark;
 			this->DGV_items->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->DGV_items->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle11->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle11->BackColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::ControlDark;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle11->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle11->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle11->SelectionForeColor = System::Drawing::SystemColors::ControlDarkDark;
-			dataGridViewCellStyle11->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DGV_items->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::ControlDarkDark;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DGV_items->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->DGV_items->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			dataGridViewCellStyle12->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle12->BackColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::ControlDark;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle12->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle12->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle12->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle12->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->DGV_items->DefaultCellStyle = dataGridViewCellStyle12;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->DGV_items->DefaultCellStyle = dataGridViewCellStyle3;
 			this->DGV_items->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->DGV_items->Location = System::Drawing::Point(9, 192);
+			this->DGV_items->Location = System::Drawing::Point(9, 225);
 			this->DGV_items->Name = L"DGV_items";
 			this->DGV_items->ReadOnly = true;
 			this->DGV_items->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
 			this->DGV_items->RowHeadersVisible = false;
 			this->DGV_items->RowHeadersWidth = 51;
 			this->DGV_items->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->DGV_items->Size = System::Drawing::Size(811, 394);
+			this->DGV_items->Size = System::Drawing::Size(811, 361);
 			this->DGV_items->TabIndex = 18;
 			// 
 			// label4
@@ -361,12 +359,49 @@ namespace SistemaVentaHardware {
 			this->nuevaVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
 			this->nuevaVentaToolStripMenuItem->Text = L"Nueva Venta";
 			// 
+			// buscarVentaToolStripMenuItem
+			// 
+			this->buscarVentaToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->buscarVentaToolStripMenuItem->Name = L"buscarVentaToolStripMenuItem";
+			this->buscarVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
+			this->buscarVentaToolStripMenuItem->Text = L"Buscar Venta";
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(9, 189);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(95, 36);
+			this->button1->TabIndex = 25;
+			this->button1->Text = L"ITEMS";
+			this->button1->UseVisualStyleBackColor = false;
+			// 
+			// button2
+			// 
+			this->button2->BackColor = System::Drawing::SystemColors::ControlDarkDark;
+			this->button2->FlatAppearance->BorderSize = 0;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->Location = System::Drawing::Point(104, 189);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(95, 36);
+			this->button2->TabIndex = 26;
+			this->button2->Text = L"ITEMS";
+			this->button2->UseVisualStyleBackColor = false;
+			// 
 			// Form_Venta
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
 			this->ClientSize = System::Drawing::Size(830, 592);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->label4);
