@@ -101,7 +101,7 @@ namespace CppCLRWinFormsProject {
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(830, 29);
+			this->menuStrip1->Size = System::Drawing::Size(1044, 29);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"hola";
 			// 
@@ -195,7 +195,7 @@ namespace CppCLRWinFormsProject {
 			this->tabla->RowHeadersVisible = false;
 			this->tabla->RowHeadersWidth = 51;
 			this->tabla->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->tabla->Size = System::Drawing::Size(808, 499);
+			this->tabla->Size = System::Drawing::Size(1022, 499);
 			this->tabla->TabIndex = 1;
 			// 
 			// label2
@@ -248,9 +248,9 @@ namespace CppCLRWinFormsProject {
 			this->btn_limpiar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_limpiar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btn_limpiar->Location = System::Drawing::Point(566, 24);
+			this->btn_limpiar->Location = System::Drawing::Point(566, 32);
 			this->btn_limpiar->Name = L"btn_limpiar";
-			this->btn_limpiar->Size = System::Drawing::Size(95, 46);
+			this->btn_limpiar->Size = System::Drawing::Size(95, 38);
 			this->btn_limpiar->TabIndex = 8;
 			this->btn_limpiar->Text = L"Limpiar";
 			this->btn_limpiar->UseVisualStyleBackColor = true;
@@ -261,7 +261,7 @@ namespace CppCLRWinFormsProject {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			this->ClientSize = System::Drawing::Size(830, 592);
+			this->ClientSize = System::Drawing::Size(1044, 592);
 			this->Controls->Add(this->btn_limpiar);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->comboBox1);

@@ -67,6 +67,11 @@ namespace SistemaVentaHardware {
 	private: System::Windows::Forms::ToolStripMenuItem^ buscarVentaToolStripMenuItem;
 	private: System::Windows::Forms::Button^ btn_tab_items;
 	private: System::Windows::Forms::Button^ btn_tab_carrito;
+	private: System::Windows::Forms::Label^ label7;
+
+	private: System::Windows::Forms::DomainUpDown^ updw_cantidad;
+	private: System::Windows::Forms::Button^ btn_eliminar_del_carrito;
+
 
 
 
@@ -88,9 +93,9 @@ namespace SistemaVentaHardware {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle11 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle12 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->btn_limpiar = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->comboBox_tipo = (gcnew System::Windows::Forms::ComboBox());
@@ -113,6 +118,9 @@ namespace SistemaVentaHardware {
 			this->txt_venta_estado = (gcnew System::Windows::Forms::TextBox());
 			this->btn_tab_items = (gcnew System::Windows::Forms::Button());
 			this->btn_tab_carrito = (gcnew System::Windows::Forms::Button());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->updw_cantidad = (gcnew System::Windows::Forms::DomainUpDown());
+			this->btn_eliminar_del_carrito = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_items))->BeginInit();
 			this->SuspendLayout();
@@ -202,12 +210,13 @@ namespace SistemaVentaHardware {
 			this->btn_agregar_carrito->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_agregar_carrito->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btn_agregar_carrito->Location = System::Drawing::Point(652, 147);
+			this->btn_agregar_carrito->Location = System::Drawing::Point(861, 187);
 			this->btn_agregar_carrito->Name = L"btn_agregar_carrito";
-			this->btn_agregar_carrito->Size = System::Drawing::Size(168, 39);
+			this->btn_agregar_carrito->Size = System::Drawing::Size(168, 34);
 			this->btn_agregar_carrito->TabIndex = 16;
 			this->btn_agregar_carrito->Text = L"Agregar al Carrito";
 			this->btn_agregar_carrito->UseVisualStyleBackColor = true;
+			this->btn_agregar_carrito->Click += gcnew System::EventHandler(this, &Form_Venta::btn_agregar_carrito_Click);
 			// 
 			// menuStrip1
 			// 
@@ -215,7 +224,7 @@ namespace SistemaVentaHardware {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->accionesToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(830, 29);
+			this->menuStrip1->Size = System::Drawing::Size(1044, 29);
 			this->menuStrip1->TabIndex = 17;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -258,38 +267,38 @@ namespace SistemaVentaHardware {
 			this->DGV_items->AllowUserToAddRows = false;
 			this->DGV_items->AllowUserToDeleteRows = false;
 			this->DGV_items->AllowUserToResizeRows = false;
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Desktop;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DGV_items->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle10->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle10->BackColor = System::Drawing::SystemColors::ControlDarkDark;
+			dataGridViewCellStyle10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11));
+			dataGridViewCellStyle10->ForeColor = System::Drawing::SystemColors::Desktop;
+			dataGridViewCellStyle10->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle10->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle10->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DGV_items->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
 			this->DGV_items->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->DGV_items->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->DGV_items->BackgroundColor = System::Drawing::SystemColors::ControlDark;
 			this->DGV_items->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->DGV_items->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle11->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle11->BackColor = System::Drawing::SystemColors::ControlDark;
+			dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::ControlDarkDark;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DGV_items->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle11->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle11->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle11->SelectionForeColor = System::Drawing::SystemColors::ControlDarkDark;
+			dataGridViewCellStyle11->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DGV_items->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
 			this->DGV_items->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle12->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle12->BackColor = System::Drawing::SystemColors::ControlDark;
+			dataGridViewCellStyle12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->DGV_items->DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle12->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle12->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle12->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle12->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->DGV_items->DefaultCellStyle = dataGridViewCellStyle12;
 			this->DGV_items->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->DGV_items->Location = System::Drawing::Point(9, 225);
 			this->DGV_items->Name = L"DGV_items";
@@ -298,15 +307,16 @@ namespace SistemaVentaHardware {
 			this->DGV_items->RowHeadersVisible = false;
 			this->DGV_items->RowHeadersWidth = 51;
 			this->DGV_items->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->DGV_items->Size = System::Drawing::Size(811, 361);
+			this->DGV_items->Size = System::Drawing::Size(1023, 361);
 			this->DGV_items->TabIndex = 18;
+			this->DGV_items->SelectionChanged += gcnew System::EventHandler(this, &Form_Venta::DGV_items_SelectionChanged);
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(537, 38);
+			this->label4->Location = System::Drawing::Point(751, 35);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(81, 24);
 			this->label4->TabIndex = 22;
@@ -316,12 +326,12 @@ namespace SistemaVentaHardware {
 			// 
 			this->txt_venta_id->BackColor = System::Drawing::SystemColors::ControlDark;
 			this->txt_venta_id->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->txt_venta_id->Enabled = false;
 			this->txt_venta_id->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txt_venta_id->Location = System::Drawing::Point(647, 36);
+			this->txt_venta_id->Location = System::Drawing::Point(861, 33);
 			this->txt_venta_id->MaxLength = 20;
 			this->txt_venta_id->Name = L"txt_venta_id";
+			this->txt_venta_id->ReadOnly = true;
 			this->txt_venta_id->Size = System::Drawing::Size(171, 29);
 			this->txt_venta_id->TabIndex = 21;
 			// 
@@ -330,7 +340,7 @@ namespace SistemaVentaHardware {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(555, 73);
+			this->label5->Location = System::Drawing::Point(769, 70);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(63, 24);
 			this->label5->TabIndex = 20;
@@ -340,12 +350,12 @@ namespace SistemaVentaHardware {
 			// 
 			this->txt_venta_monto->BackColor = System::Drawing::SystemColors::ControlDark;
 			this->txt_venta_monto->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->txt_venta_monto->Enabled = false;
 			this->txt_venta_monto->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txt_venta_monto->Location = System::Drawing::Point(647, 71);
+			this->txt_venta_monto->Location = System::Drawing::Point(861, 68);
 			this->txt_venta_monto->MaxLength = 20;
 			this->txt_venta_monto->Name = L"txt_venta_monto";
+			this->txt_venta_monto->ReadOnly = true;
 			this->txt_venta_monto->Size = System::Drawing::Size(171, 29);
 			this->txt_venta_monto->TabIndex = 19;
 			// 
@@ -354,7 +364,7 @@ namespace SistemaVentaHardware {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(550, 108);
+			this->label6->Location = System::Drawing::Point(764, 105);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(68, 24);
 			this->label6->TabIndex = 24;
@@ -364,12 +374,12 @@ namespace SistemaVentaHardware {
 			// 
 			this->txt_venta_estado->BackColor = System::Drawing::SystemColors::ControlDark;
 			this->txt_venta_estado->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->txt_venta_estado->Enabled = false;
 			this->txt_venta_estado->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txt_venta_estado->Location = System::Drawing::Point(647, 106);
+			this->txt_venta_estado->Location = System::Drawing::Point(861, 103);
 			this->txt_venta_estado->MaxLength = 20;
 			this->txt_venta_estado->Name = L"txt_venta_estado";
+			this->txt_venta_estado->ReadOnly = true;
 			this->txt_venta_estado->Size = System::Drawing::Size(171, 29);
 			this->txt_venta_estado->TabIndex = 23;
 			// 
@@ -403,12 +413,50 @@ namespace SistemaVentaHardware {
 			this->btn_tab_carrito->UseVisualStyleBackColor = false;
 			this->btn_tab_carrito->Click += gcnew System::EventHandler(this, &Form_Venta::btn_tab_carrito_Click);
 			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(541, 189);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(84, 24);
+			this->label7->TabIndex = 28;
+			this->label7->Text = L"Cantidad";
+			// 
+			// updw_cantidad
+			// 
+			this->updw_cantidad->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->updw_cantidad->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->updw_cantidad->Location = System::Drawing::Point(661, 187);
+			this->updw_cantidad->Name = L"updw_cantidad";
+			this->updw_cantidad->Size = System::Drawing::Size(171, 29);
+			this->updw_cantidad->TabIndex = 29;
+			// 
+			// btn_eliminar_del_carrito
+			// 
+			this->btn_eliminar_del_carrito->FlatAppearance->BorderSize = 0;
+			this->btn_eliminar_del_carrito->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_eliminar_del_carrito->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btn_eliminar_del_carrito->Location = System::Drawing::Point(853, 182);
+			this->btn_eliminar_del_carrito->Name = L"btn_eliminar_del_carrito";
+			this->btn_eliminar_del_carrito->Size = System::Drawing::Size(179, 39);
+			this->btn_eliminar_del_carrito->TabIndex = 30;
+			this->btn_eliminar_del_carrito->Text = L"Eliminar del Carrito";
+			this->btn_eliminar_del_carrito->UseVisualStyleBackColor = true;
+			this->btn_eliminar_del_carrito->Visible = false;
+			this->btn_eliminar_del_carrito->Click += gcnew System::EventHandler(this, &Form_Venta::btn_eliminar_del_carrito_Click);
+			// 
 			// Form_Venta
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			this->ClientSize = System::Drawing::Size(830, 592);
+			this->ClientSize = System::Drawing::Size(1044, 592);
+			this->Controls->Add(this->updw_cantidad);
+			this->Controls->Add(this->label7);
 			this->Controls->Add(this->btn_tab_carrito);
 			this->Controls->Add(this->btn_tab_items);
 			this->Controls->Add(this->label6);
@@ -427,6 +475,7 @@ namespace SistemaVentaHardware {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->txt_descripcion);
 			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->btn_eliminar_del_carrito);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Form_Venta";
@@ -448,5 +497,8 @@ namespace SistemaVentaHardware {
 		private: System::Void btn_limpiar_Click(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void btn_tab_items_Click(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void btn_tab_carrito_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btn_agregar_carrito_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void DGV_items_SelectionChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btn_eliminar_del_carrito_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
