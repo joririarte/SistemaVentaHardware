@@ -23,6 +23,7 @@ System::Void CppCLRWinFormsProject::Form1::Item_Window(int mod)
 	SistemaVentaHardware::Item^ nueva_ventana_Item = gcnew SistemaVentaHardware::Item(mod, this->tabla,this->tipos);
 	nueva_ventana_Item->ShowDialog();
 	this->updateTable();
+	delete nueva_ventana_Item;
 }
 
 System::Void CppCLRWinFormsProject::Form1::Form1_Load(System::Object^ sender, System::EventArgs^ e)

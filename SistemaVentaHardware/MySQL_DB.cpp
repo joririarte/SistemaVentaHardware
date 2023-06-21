@@ -25,9 +25,8 @@ bool MySQL_DB::call_Procedures(String^ sql)
     return false;
 }
 
-DataTable^ MySQL_DB::getData()
+DataTable^ MySQL_DB::get_Table(String^ sql)
 {
-    String^ sql = "call Listar_Items()";
     MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
     MySqlDataAdapter^ data = gcnew MySqlDataAdapter(cursor);
     DataTable^ tabla = gcnew DataTable();
@@ -35,15 +34,17 @@ DataTable^ MySQL_DB::getData()
     return tabla;
 }
 
+DataTable^ MySQL_DB::getData()
+{
+    String^ sql = "call Listar_Items()";
+    return this->get_Table(sql);
+}
+
 
 DataTable^ MySQL_DB::getTipos()
 {
     String^ sql = "call Listar_Tipos()";
-    MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
-    MySqlDataAdapter^ data = gcnew MySqlDataAdapter(cursor);
-    DataTable^ tipos = gcnew DataTable();
-    data->Fill(tipos);
-    return tipos;
+    return this->get_Table(sql);
 }
 
 void MySQL_DB::openConnection()
@@ -71,14 +72,40 @@ bool MySQL_DB::eliminar(String^ cod)
     return this->call_Procedures("call Eliminar_Item(" + cod + ")");
 }
 
+bool MySQL_DB::nueva_Venta()
+{
+    String^ sql = "call Nueva_Venta()";
+    return this->call_Procedures(sql);
+}
+
+bool MySQL_DB::cerrar_Venta(String^ venta_id)
+{
+    String^ sql = "call Cerrar_Venta(" + venta_id + ")";
+    return this->call_Procedures(sql);
+}
+
+bool MySQL_DB::eliminar_Venta(String^ venta_id)
+{
+    String^ sql = "call Eliminar_Venta(" + venta_id + ")";
+    return this->call_Procedures(sql);
+}
+
+DataTable^ MySQL_DB::getVentas()
+{
+    String^ sql = "call Listar_Ventas()";
+    return this->get_Table(sql);
+}
+
+DataTable^ MySQL_DB::getVenta(String^ venta_id)
+{
+    String^ sql = "call Get_Venta(" + venta_id + ")";
+    return this->get_Table(sql);
+}
+
 DataTable^ MySQL_DB::getCarrito(String^ venta_id)
 {
     String^ sql = "call Listar_Carrito(" + venta_id + ")";
-    MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
-    MySqlDataAdapter^ data = gcnew MySqlDataAdapter(cursor);
-    DataTable^ tabla = gcnew DataTable();
-    data->Fill(tabla);
-    return tabla;
+    return this->get_Table(sql);
 }
 
 bool MySQL_DB::agregar_al_carrito(String^ item_cod, String^ venta_id, String^ cantidad)
@@ -95,24 +122,8 @@ String^ MySQL_DB::contar_carrito(String^ venta_id)
 {
     String^ cant;
     String^ sql = "call Contar_Carrito(" + venta_id+")";
-    MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
-    MySqlDataAdapter^ data = gcnew MySqlDataAdapter(cursor);
-    DataTable^ tabla = gcnew DataTable();
-    data->Fill(tabla);
+    DataTable^ tabla = this->get_Table(sql);
     array <DataRow^>^ rows = tabla->Select();
-    cant = rows[0]["cant"]->ToString();
+    cant = rows[0]["cantidad"]->ToString();
     return cant;
-}
-
-String^ MySQL_DB::sumar_carrito(String^ venta_id)
-{
-    String^ monto;
-    String^ sql = "call Sumar_Monto_Carrito(" + venta_id + ")";
-    MySqlCommand^ cursor = gcnew MySqlCommand(sql, this->conn);
-    MySqlDataAdapter^ data = gcnew MySqlDataAdapter(cursor);
-    DataTable^ tabla = gcnew DataTable();
-    data->Fill(tabla);
-    array <DataRow^>^ rows = tabla->Select();
-    monto = rows[0]["monto"]->ToString();
-    return monto;
 }

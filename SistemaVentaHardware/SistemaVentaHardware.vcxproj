@@ -139,6 +139,9 @@
     <ClInclude Include="Item.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Lista_Ventas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -152,6 +155,7 @@
     <ClCompile Include="Form1.cpp" />
     <ClCompile Include="Form_Venta.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Lista_Ventas.cpp" />
     <ClCompile Include="MainPage.cpp" />
     <ClCompile Include="MySQL_DB.cpp" />
     <ClCompile Include="pch.cpp">
@@ -183,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Item.resx">
       <DependentUpon>Item.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lista_Ventas.resx">
+      <DependentUpon>Lista_Ventas.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.h</DependentUpon>

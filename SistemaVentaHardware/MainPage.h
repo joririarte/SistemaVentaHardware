@@ -36,6 +36,8 @@ namespace SistemaVentaHardware {
 				delete components;
 			}
 		}
+	private: CppCLRWinFormsProject::Form1^ stock;
+	private: SistemaVentaHardware::Form_Venta^ ventas;
 	private: System::Windows::Forms::Panel^ panel_lateral;
 	protected:
 	private: System::Windows::Forms::Button^ btn_venta;
@@ -150,7 +152,13 @@ namespace SistemaVentaHardware {
 	private: System::Void btn_stock_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->btn_stock->BackColor = System::Drawing::SystemColors::ControlDarkDark;
 		this->btn_venta->BackColor = System::Drawing::SystemColors::ControlDark;
-		this->AbrirPanel(gcnew CppCLRWinFormsProject::Form1);
+		
+		SistemaVentaHardware::Form_Venta^ antForm = ventas;
+		ventas = nullptr;
+		delete antForm;
+		
+		stock= gcnew CppCLRWinFormsProject::Form1();
+		this->AbrirPanel(stock);
 	}
 	private: System::Void MainPage_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->AbrirPanel(gcnew CppCLRWinFormsProject::Form1);
@@ -158,7 +166,13 @@ namespace SistemaVentaHardware {
 	private: System::Void btn_venta_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->btn_stock->BackColor = System::Drawing::SystemColors::ControlDark;
 		this->btn_venta->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-		this->AbrirPanel(gcnew SistemaVentaHardware::Form_Venta);
+		
+		CppCLRWinFormsProject::Form1^ antForm = stock;
+		stock = nullptr;
+		delete antForm;
+		
+		ventas = gcnew SistemaVentaHardware::Form_Venta();
+		this->AbrirPanel(ventas);
 	}
 };
 }
