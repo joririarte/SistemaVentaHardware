@@ -104,7 +104,25 @@ System::Void SistemaVentaHardware::Form_Venta::buscarVentaToolStripMenuItem_Clic
 {
 	SistemaVentaHardware::Lista_Ventas^ gestor_ventas = gcnew SistemaVentaHardware::Lista_Ventas();
 	gestor_ventas->ShowDialog();
-	this->update_txt_venta(gestor_ventas->ventaID);
+	if(gestor_ventas->ventaID!="")
+		this->update_txt_venta(gestor_ventas->ventaID);
 	delete gestor_ventas;
+}
+
+System::Void SistemaVentaHardware::Form_Venta::cerrarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	if (this->txt_venta_id->Text != "") {
+		this->dataSQL->openConnection();
+		this->dataSQL->cerrar_Venta(this->txt_venta_id->Text);
+		this->dataSQL->closeConnection();
+		this->update_txt_venta(this->txt_venta_id->Text);
+	}
+}
+
+System::Void SistemaVentaHardware::Form_Venta::nuevaVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	this->dataSQL->openConnection();
+	this->dataSQL->nueva_Venta();
+	this->dataSQL->closeConnection();
 }
 

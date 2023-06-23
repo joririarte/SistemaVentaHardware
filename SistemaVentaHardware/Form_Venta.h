@@ -256,6 +256,7 @@ namespace SistemaVentaHardware {
 			this->nuevaVentaToolStripMenuItem->Name = L"nuevaVentaToolStripMenuItem";
 			this->nuevaVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
 			this->nuevaVentaToolStripMenuItem->Text = L"Nueva Venta";
+			this->nuevaVentaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form_Venta::nuevaVentaToolStripMenuItem_Click);
 			// 
 			// buscarVentaToolStripMenuItem
 			// 
@@ -278,6 +279,7 @@ namespace SistemaVentaHardware {
 			this->cerrarVentaToolStripMenuItem->Name = L"cerrarVentaToolStripMenuItem";
 			this->cerrarVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
 			this->cerrarVentaToolStripMenuItem->Text = L"Cerrar Venta";
+			this->cerrarVentaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form_Venta::cerrarVentaToolStripMenuItem_Click);
 			// 
 			// DGV_items
 			// 
@@ -547,5 +549,7 @@ namespace SistemaVentaHardware {
 		private: System::Void DGV_items_SelectionChanged(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void btn_eliminar_del_carrito_Click(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void buscarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void cerrarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void nuevaVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

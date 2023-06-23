@@ -37,7 +37,7 @@ namespace SistemaVentaHardware {
 			}
 		}
 	private: MySQL_DB^ dataSQL;
-	public: String^ ventaID;
+	public: String^ ventaID="";
 	private: System::Windows::Forms::DataGridView^ DGV_Ventas;
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ txt_venta_fecha;
@@ -64,9 +64,9 @@ namespace SistemaVentaHardware {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->DGV_Ventas = (gcnew System::Windows::Forms::DataGridView());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->txt_venta_fecha = (gcnew System::Windows::Forms::TextBox());
@@ -87,38 +87,38 @@ namespace SistemaVentaHardware {
 			this->DGV_Ventas->AllowUserToAddRows = false;
 			this->DGV_Ventas->AllowUserToDeleteRows = false;
 			this->DGV_Ventas->AllowUserToResizeRows = false;
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::Desktop;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DGV_Ventas->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::ControlDarkDark;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11));
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::Desktop;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DGV_Ventas->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this->DGV_Ventas->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->DGV_Ventas->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->DGV_Ventas->BackgroundColor = System::Drawing::SystemColors::ControlDark;
 			this->DGV_Ventas->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->DGV_Ventas->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::ControlDark;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::ControlDarkDark;
-			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->DGV_Ventas->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::ControlDarkDark;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->DGV_Ventas->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->DGV_Ventas->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle6->BackColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::ControlDark;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->DGV_Ventas->DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->DGV_Ventas->DefaultCellStyle = dataGridViewCellStyle3;
 			this->DGV_Ventas->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->DGV_Ventas->Location = System::Drawing::Point(12, 98);
 			this->DGV_Ventas->Name = L"DGV_Ventas";
@@ -248,6 +248,7 @@ namespace SistemaVentaHardware {
 			this->btn_cancelar->TabIndex = 42;
 			this->btn_cancelar->Text = L"Cancelar";
 			this->btn_cancelar->UseVisualStyleBackColor = true;
+			this->btn_cancelar->Click += gcnew System::EventHandler(this, &Lista_Ventas::btn_cancelar_Click);
 			// 
 			// Lista_Ventas
 			// 
@@ -269,6 +270,7 @@ namespace SistemaVentaHardware {
 			this->Name = L"Lista_Ventas";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"Lista_Ventas";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Lista_Ventas::Lista_Ventas_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &Lista_Ventas::Lista_Ventas_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_Ventas))->EndInit();
 			this->ResumeLayout(false);
@@ -279,5 +281,7 @@ namespace SistemaVentaHardware {
 		private: System::Void UpdateTable();
 		private: System::Void Lista_Ventas_Load(System::Object^ sender, System::EventArgs^ e);
 private: System::Void btn_seleccionar_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void btn_cancelar_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void Lista_Ventas_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e);
 };
 }

@@ -18,3 +18,13 @@ System::Void SistemaVentaHardware::Lista_Ventas::btn_seleccionar_Click(System::O
     ventaID = this->DGV_Ventas->CurrentRow->Cells[0]->Value->ToString();
     this->Close();
 }
+
+System::Void SistemaVentaHardware::Lista_Ventas::btn_cancelar_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    this->Close();
+}
+
+System::Void SistemaVentaHardware::Lista_Ventas::Lista_Ventas_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e)
+{
+    ventaID = ventaID != "" ? ventaID : "";
+}
