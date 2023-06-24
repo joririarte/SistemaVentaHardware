@@ -65,7 +65,7 @@ namespace SistemaVentaHardware {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ txt_venta_estado;
 
-	private: System::Windows::Forms::ToolStripMenuItem^ nuevaVentaToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ buscarVentaToolStripMenuItem;
 	private: System::Windows::Forms::Button^ btn_tab_items;
 	private: System::Windows::Forms::Button^ btn_tab_carrito;
@@ -76,6 +76,7 @@ namespace SistemaVentaHardware {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ txt_venta_fecha;
 	private: System::Windows::Forms::ToolStripMenuItem^ cerrarVentaToolStripMenuItem;
+
 
 
 
@@ -112,7 +113,6 @@ namespace SistemaVentaHardware {
 			this->btn_agregar_carrito = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->accionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->nuevaVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->buscarVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ventaPresupuestoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -168,6 +168,7 @@ namespace SistemaVentaHardware {
 			this->comboBox_tipo->Name = L"comboBox_tipo";
 			this->comboBox_tipo->Size = System::Drawing::Size(171, 32);
 			this->comboBox_tipo->TabIndex = 11;
+			this->comboBox_tipo->SelectedIndexChanged += gcnew System::EventHandler(this, &Form_Venta::comboBox_tipo_SelectedIndexChanged);
 			// 
 			// label2
 			// 
@@ -190,6 +191,7 @@ namespace SistemaVentaHardware {
 			this->txt_descripcion->Name = L"txt_descripcion";
 			this->txt_descripcion->Size = System::Drawing::Size(171, 29);
 			this->txt_descripcion->TabIndex = 9;
+			this->txt_descripcion->TextChanged += gcnew System::EventHandler(this, &Form_Venta::txt_descripcion_TextChanged);
 			// 
 			// label3
 			// 
@@ -212,6 +214,7 @@ namespace SistemaVentaHardware {
 			this->txt_codigo->Name = L"txt_codigo";
 			this->txt_codigo->Size = System::Drawing::Size(171, 29);
 			this->txt_codigo->TabIndex = 14;
+			this->txt_codigo->TextChanged += gcnew System::EventHandler(this, &Form_Venta::txt_codigo_TextChanged);
 			// 
 			// btn_agregar_carrito
 			// 
@@ -219,9 +222,9 @@ namespace SistemaVentaHardware {
 			this->btn_agregar_carrito->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_agregar_carrito->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btn_agregar_carrito->Location = System::Drawing::Point(861, 187);
+			this->btn_agregar_carrito->Location = System::Drawing::Point(853, 180);
 			this->btn_agregar_carrito->Name = L"btn_agregar_carrito";
-			this->btn_agregar_carrito->Size = System::Drawing::Size(168, 34);
+			this->btn_agregar_carrito->Size = System::Drawing::Size(179, 39);
 			this->btn_agregar_carrito->TabIndex = 16;
 			this->btn_agregar_carrito->Text = L"Agregar al Carrito";
 			this->btn_agregar_carrito->UseVisualStyleBackColor = true;
@@ -241,29 +244,21 @@ namespace SistemaVentaHardware {
 			// accionesToolStripMenuItem
 			// 
 			this->accionesToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-			this->accionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
-				this->nuevaVentaToolStripMenuItem,
-					this->buscarVentaToolStripMenuItem, this->ventaPresupuestoToolStripMenuItem, this->cerrarVentaToolStripMenuItem
+			this->accionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->buscarVentaToolStripMenuItem,
+					this->ventaPresupuestoToolStripMenuItem, this->cerrarVentaToolStripMenuItem
 			});
 			this->accionesToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12));
 			this->accionesToolStripMenuItem->Name = L"accionesToolStripMenuItem";
 			this->accionesToolStripMenuItem->Size = System::Drawing::Size(83, 25);
 			this->accionesToolStripMenuItem->Text = L"Acciones";
 			// 
-			// nuevaVentaToolStripMenuItem
-			// 
-			this->nuevaVentaToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->nuevaVentaToolStripMenuItem->Name = L"nuevaVentaToolStripMenuItem";
-			this->nuevaVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
-			this->nuevaVentaToolStripMenuItem->Text = L"Nueva Venta";
-			this->nuevaVentaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form_Venta::nuevaVentaToolStripMenuItem_Click);
-			// 
 			// buscarVentaToolStripMenuItem
 			// 
 			this->buscarVentaToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
 			this->buscarVentaToolStripMenuItem->Name = L"buscarVentaToolStripMenuItem";
 			this->buscarVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
-			this->buscarVentaToolStripMenuItem->Text = L"Buscar Venta";
+			this->buscarVentaToolStripMenuItem->Text = L"Gestor de Ventas";
 			this->buscarVentaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form_Venta::buscarVentaToolStripMenuItem_Click);
 			// 
 			// ventaPresupuestoToolStripMenuItem
@@ -439,7 +434,7 @@ namespace SistemaVentaHardware {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(541, 189);
+			this->label7->Location = System::Drawing::Point(619, 187);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(84, 24);
 			this->label7->TabIndex = 28;
@@ -450,9 +445,9 @@ namespace SistemaVentaHardware {
 			this->updw_cantidad->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->updw_cantidad->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->updw_cantidad->Location = System::Drawing::Point(661, 187);
+			this->updw_cantidad->Location = System::Drawing::Point(721, 185);
 			this->updw_cantidad->Name = L"updw_cantidad";
-			this->updw_cantidad->Size = System::Drawing::Size(171, 29);
+			this->updw_cantidad->Size = System::Drawing::Size(100, 29);
 			this->updw_cantidad->TabIndex = 29;
 			// 
 			// btn_eliminar_del_carrito
@@ -461,7 +456,7 @@ namespace SistemaVentaHardware {
 			this->btn_eliminar_del_carrito->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_eliminar_del_carrito->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->btn_eliminar_del_carrito->Location = System::Drawing::Point(853, 182);
+			this->btn_eliminar_del_carrito->Location = System::Drawing::Point(853, 180);
 			this->btn_eliminar_del_carrito->Name = L"btn_eliminar_del_carrito";
 			this->btn_eliminar_del_carrito->Size = System::Drawing::Size(179, 39);
 			this->btn_eliminar_del_carrito->TabIndex = 30;
@@ -539,6 +534,7 @@ namespace SistemaVentaHardware {
 		//	FUNCIONES
 		private: System::Void updateTable(int);
 		private: System::Void update_txt_venta(String^);
+		private: System::Void updateComboBox_Tipos();
 		
 		//EVENTOS
 		private: System::Void Form_Venta_Load(System::Object^ sender, System::EventArgs^ e);
@@ -550,6 +546,8 @@ namespace SistemaVentaHardware {
 		private: System::Void btn_eliminar_del_carrito_Click(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void buscarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void cerrarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void nuevaVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void txt_codigo_TextChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void txt_descripcion_TextChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void comboBox_tipo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
 };
 }

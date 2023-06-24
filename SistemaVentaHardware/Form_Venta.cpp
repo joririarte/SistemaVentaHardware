@@ -20,21 +20,36 @@ System::Void SistemaVentaHardware::Form_Venta::update_txt_venta(String^ ventaID)
 	array <DataRow^>^ rows = venta->Select();
 	this->txt_venta_id->Text = rows[0]["ID"]->ToString();
 	this->txt_venta_monto->Text = rows[0]["MONTO"]->ToString();
-	this->txt_venta_estado->Text = rows[0]["ESTADO"]->ToString() == "True" ? "ABIERTA" : "CERRADA";
-	this->txt_venta_fecha->Text = rows[0]["FECHA"]->ToString();
+	this->txt_venta_estado->Text = rows[0]["ESTADO"]->ToString();
+	String^ fecha = rows[0]["FECHA"]->ToString();
+	fecha = fecha->Remove(fecha->IndexOf(' '));
+	this->txt_venta_fecha->Text = fecha + " " + rows[0]["HORA"]->ToString();
 	this->btn_tab_carrito->Text = "CARRITO (" + this->dataSQL->contar_carrito(ventaID) + ")";
 	this->dataSQL->closeConnection();
+}
+
+System::Void SistemaVentaHardware::Form_Venta::updateComboBox_Tipos()
+{
+	this->dataSQL->openConnection();
+	this->comboBox_tipo->DataSource = this->dataSQL->getTipos();
+	this->comboBox_tipo->ValueMember = "tipo_id";
+	this->comboBox_tipo->DisplayMember = "tipo_nombre";
+	this->dataSQL->closeConnection();
+	this->comboBox_tipo->SelectedIndex = -1;
 }
 
 System::Void SistemaVentaHardware::Form_Venta::Form_Venta_Load(System::Object^ sender, System::EventArgs^ e)
 {
 	this->updateTable(this->tab_state);
+	this->updateComboBox_Tipos();
 }
 
 System::Void SistemaVentaHardware::Form_Venta::btn_limpiar_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	this->txt_codigo->Text = "";
 	this->txt_descripcion->Text = "";
 	this->comboBox_tipo->SelectedIndex = -1;
+	this->updateTable(this->tab_state);
 }
 
 System::Void SistemaVentaHardware::Form_Venta::btn_tab_items_Click(System::Object^ sender, System::EventArgs^ e)
@@ -111,18 +126,49 @@ System::Void SistemaVentaHardware::Form_Venta::buscarVentaToolStripMenuItem_Clic
 
 System::Void SistemaVentaHardware::Form_Venta::cerrarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	if (this->txt_venta_id->Text != "") {
-		this->dataSQL->openConnection();
-		this->dataSQL->cerrar_Venta(this->txt_venta_id->Text);
-		this->dataSQL->closeConnection();
-		this->update_txt_venta(this->txt_venta_id->Text);
-	}
+	this->dataSQL->openConnection();
+	this->dataSQL->cerrar_Venta(this->txt_venta_id->Text);
+	this->dataSQL->closeConnection();
+	this->update_txt_venta(this->txt_venta_id->Text);
 }
 
-System::Void SistemaVentaHardware::Form_Venta::nuevaVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void SistemaVentaHardware::Form_Venta::txt_codigo_TextChanged(System::Object^ sender, System::EventArgs^ e)
 {
-	this->dataSQL->openConnection();
-	this->dataSQL->nueva_Venta();
-	this->dataSQL->closeConnection();
+	if (this->txt_codigo->Text != "") {
+		DataTable^ dt;
+		DataView^ dv;
+
+		dt = this->tab_state==1 ? this->dataSQL->getData() : this->dataSQL->getCarrito(this->txt_venta_id->Text);
+		
+		dv = dt->DefaultView;
+		dv->RowFilter = "Codigo =" + this->txt_codigo->Text;
+		this->DGV_items->DataSource = dv;
+	}
+	else
+		this->updateTable(this->tab_state);
+}
+
+System::Void SistemaVentaHardware::Form_Venta::txt_descripcion_TextChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	DataTable^ dt;
+	DataView^ dv;
+	
+	dt = this->tab_state==1 ? this->dataSQL->getData() : this->dataSQL->getCarrito(this->txt_venta_id->Text);
+	
+	dv = dt->DefaultView;
+	dv->RowFilter = "Descripcion LIKE '" + this->txt_descripcion->Text + "%'";
+	this->DGV_items->DataSource = dv;
+}
+
+System::Void SistemaVentaHardware::Form_Venta::comboBox_tipo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	DataTable^ dt;
+	DataView^ dv;
+	
+	dt = this->tab_state==1 ? this->dataSQL->getData() : this->dataSQL->getCarrito(this->txt_venta_id->Text);
+	
+	dv = dt->DefaultView;
+	dv->RowFilter = "TIPO LIKE '" + this->comboBox_tipo->Text + "%'";
+	this->DGV_items->DataSource = dv;
 }
 
