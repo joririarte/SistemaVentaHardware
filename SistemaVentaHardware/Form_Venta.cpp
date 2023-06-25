@@ -103,7 +103,7 @@ System::Void SistemaVentaHardware::Form_Venta::DGV_items_SelectionChanged(System
 
 System::Void SistemaVentaHardware::Form_Venta::btn_eliminar_del_carrito_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	if (tab_state == 0 && this->txt_venta_id->Text != "" && this->txt_venta_estado->Text == "ABIERTA") {
+	if (tab_state == 2 && this->txt_venta_id->Text != "" && this->txt_venta_estado->Text == "ABIERTA") {
 		this->dataSQL->openConnection();
 		String^ ventaID = this->txt_venta_id->Text;
 		String^ item_cod = this->DGV_items->CurrentRow->Cells[0]->Value->ToString();
