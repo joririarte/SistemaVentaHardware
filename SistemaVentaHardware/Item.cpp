@@ -82,7 +82,7 @@ System::Void SistemaVentaHardware::Item::btn_modificar_Click(System::Object^ sen
 	if (this->dataDB->modificar(
 		this->txt_codigo->Text,
 		this->txt_descripcion->Text,
-		this->txt_precio->Text,
+		this->txt_precio->Text->Replace(',', '.'),
 		this->txt_existencias->Text,
 		this->txt_minima->Text,
 		this->comboBox_tipo->SelectedValue->ToString()))

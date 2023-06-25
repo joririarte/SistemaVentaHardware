@@ -1,14 +1,14 @@
 #include "pch.h"
 #include "Form_Venta.h"
 
-System::Void SistemaVentaHardware::Form_Venta::updateTable(int a)
+System::Void SistemaVentaHardware::Form_Venta::updateTable(int tabState)
 {
 	this->dataSQL->openConnection();
 	//DataGridView ITEMS
-	if(a==1)
+	if(tabState==1)
 		this->DGV_items->DataSource = this->dataSQL->getData();
 	//DataGridView CARRITO
-	else
+	else if(tabState==2)
 		this->DGV_items->DataSource = this->dataSQL->getCarrito(this->txt_venta_id->Text);
 	this->dataSQL->closeConnection();
 }
@@ -70,7 +70,7 @@ System::Void SistemaVentaHardware::Form_Venta::btn_tab_carrito_Click(System::Obj
 		this->btn_eliminar_del_carrito->Visible = true;
 		this->btn_tab_carrito->BackColor = System::Drawing::SystemColors::ControlDark;
 		this->btn_tab_items->BackColor = System::Drawing::SystemColors::ControlDarkDark;
-		this->tab_state = 0;
+		this->tab_state = 2;
 		this->updateTable(this->tab_state);
 	}
 }
@@ -116,12 +116,15 @@ System::Void SistemaVentaHardware::Form_Venta::btn_eliminar_del_carrito_Click(Sy
 	}
 }
 
-System::Void SistemaVentaHardware::Form_Venta::buscarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void SistemaVentaHardware::Form_Venta::gestorVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	SistemaVentaHardware::Lista_Ventas^ gestor_ventas = gcnew SistemaVentaHardware::Lista_Ventas();
 	gestor_ventas->ShowDialog();
 	if(gestor_ventas->ventaID!="")
 		this->update_txt_venta(gestor_ventas->ventaID);
+	if (this->tab_state == 2) {
+		this->updateTable(this->tab_state);
+	}
 	delete gestor_ventas;
 }
 

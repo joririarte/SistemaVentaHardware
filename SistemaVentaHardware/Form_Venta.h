@@ -64,9 +64,10 @@ namespace SistemaVentaHardware {
 
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ txt_venta_estado;
+	private: System::Windows::Forms::ToolStripMenuItem^ gestorVentaToolStripMenuItem;
 
 
-	private: System::Windows::Forms::ToolStripMenuItem^ buscarVentaToolStripMenuItem;
+
 	private: System::Windows::Forms::Button^ btn_tab_items;
 	private: System::Windows::Forms::Button^ btn_tab_carrito;
 	private: System::Windows::Forms::Label^ label7;
@@ -113,7 +114,7 @@ namespace SistemaVentaHardware {
 			this->btn_agregar_carrito = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->accionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->buscarVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->gestorVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ventaPresupuestoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarVentaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->DGV_items = (gcnew System::Windows::Forms::DataGridView());
@@ -245,7 +246,7 @@ namespace SistemaVentaHardware {
 			// 
 			this->accionesToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDarkDark;
 			this->accionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->buscarVentaToolStripMenuItem,
+				this->gestorVentaToolStripMenuItem,
 					this->ventaPresupuestoToolStripMenuItem, this->cerrarVentaToolStripMenuItem
 			});
 			this->accionesToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12));
@@ -253,13 +254,13 @@ namespace SistemaVentaHardware {
 			this->accionesToolStripMenuItem->Size = System::Drawing::Size(83, 25);
 			this->accionesToolStripMenuItem->Text = L"Acciones";
 			// 
-			// buscarVentaToolStripMenuItem
+			// gestorVentaToolStripMenuItem
 			// 
-			this->buscarVentaToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
-			this->buscarVentaToolStripMenuItem->Name = L"buscarVentaToolStripMenuItem";
-			this->buscarVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
-			this->buscarVentaToolStripMenuItem->Text = L"Gestor de Ventas";
-			this->buscarVentaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form_Venta::buscarVentaToolStripMenuItem_Click);
+			this->gestorVentaToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->gestorVentaToolStripMenuItem->Name = L"gestorVentaToolStripMenuItem";
+			this->gestorVentaToolStripMenuItem->Size = System::Drawing::Size(209, 26);
+			this->gestorVentaToolStripMenuItem->Text = L"Gestor de Ventas";
+			this->gestorVentaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form_Venta::gestorVentaToolStripMenuItem_Click);
 			// 
 			// ventaPresupuestoToolStripMenuItem
 			// 
@@ -544,7 +545,7 @@ namespace SistemaVentaHardware {
 		private: System::Void btn_agregar_carrito_Click(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void DGV_items_SelectionChanged(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void btn_eliminar_del_carrito_Click(System::Object^ sender, System::EventArgs^ e);
-		private: System::Void buscarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+		private: System::Void gestorVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void cerrarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void txt_codigo_TextChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void txt_descripcion_TextChanged(System::Object^ sender, System::EventArgs^ e);

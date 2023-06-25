@@ -69,7 +69,7 @@ bool MySQL_DB::modificar(String^ cod, String^ descr, String^ precio, String^ exi
 
 bool MySQL_DB::eliminar(String^ cod)
 {
-    return this->call_Procedures("call Eliminar_Item(" + cod + ")");
+    return this->call_Procedures("call Eliminar_Logico_Item(" + cod + ")");
 }
 
 bool MySQL_DB::actualizar_item_existencias(String^ itemID, String^ cant)
