@@ -72,6 +72,12 @@ bool MySQL_DB::eliminar(String^ cod)
     return this->call_Procedures("call Eliminar_Item(" + cod + ")");
 }
 
+bool MySQL_DB::actualizar_item_existencias(String^ itemID, String^ cant)
+{
+    String^ sql = "call Actualizar_Item_Existencias(" + itemID + "," + cant + ")";
+    return this->call_Procedures(sql);
+}
+
 bool MySQL_DB::nueva_Venta()
 {
     String^ sql = "call Nueva_Venta()";

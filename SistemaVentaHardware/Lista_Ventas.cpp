@@ -69,9 +69,13 @@ System::Void SistemaVentaHardware::Lista_Ventas::DGV_Ventas_MouseDoubleClick(Sys
 
 System::Void SistemaVentaHardware::Lista_Ventas::txt_venta_id_TextChanged(System::Object^ sender, System::EventArgs^ e)
 {
-    DataView^ dv = this->dataSQL->getVentas()->DefaultView;
-    dv->RowFilter = "ID =" + this->txt_venta_id->Text ;
-    this->DGV_Ventas->DataSource = dv;
+    if (txt_venta_id->Text != "") {
+        DataView^ dv = this->dataSQL->getVentas()->DefaultView;
+        dv->RowFilter = "ID =" + this->txt_venta_id->Text;
+        this->DGV_Ventas->DataSource = dv;
+    }
+    else
+        this->UpdateTable();
 }
 
 System::Void SistemaVentaHardware::Lista_Ventas::dateTimePicker1_ValueChanged(System::Object^ sender, System::EventArgs^ e)

@@ -21,6 +21,7 @@ public:
 	bool insertar(String^ descr,String^ precio, String^ existencia, String^ minima, String^ tipo);
 	bool modificar(String^ cod, String^ descr, String^ precio, String^ existencia, String^ minima, String^ tipo);
 	bool eliminar(String^ cod);
+	bool actualizar_item_existencias(String^ itemID, String^ cant);
 	//VENTAS - CARRITO
 	bool nueva_Venta();
 	bool cerrar_Venta(String^);

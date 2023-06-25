@@ -18,6 +18,7 @@ System::Void SistemaVentaHardware::Form_Venta::update_txt_venta(String^ ventaID)
 	this->dataSQL->openConnection();
 	DataTable^ venta = this->dataSQL->getVenta(ventaID);
 	array <DataRow^>^ rows = venta->Select();
+	int cant = rows->GetLength(0);
 	this->txt_venta_id->Text = rows[0]["ID"]->ToString();
 	this->txt_venta_monto->Text = rows[0]["MONTO"]->ToString();
 	this->txt_venta_estado->Text = rows[0]["ESTADO"]->ToString();
@@ -126,10 +127,16 @@ System::Void SistemaVentaHardware::Form_Venta::buscarVentaToolStripMenuItem_Clic
 
 System::Void SistemaVentaHardware::Form_Venta::cerrarVentaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	this->dataSQL->openConnection();
-	this->dataSQL->cerrar_Venta(this->txt_venta_id->Text);
-	this->dataSQL->closeConnection();
-	this->update_txt_venta(this->txt_venta_id->Text);
+	if (this->txt_venta_id->Text != "" && this->txt_venta_estado->Text == "ABIERTA") {
+		this->dataSQL->openConnection();
+		this->dataSQL->cerrar_Venta(this->txt_venta_id->Text);
+		array <DataRow^>^ carrito = this->dataSQL->getCarrito(this->txt_venta_id->Text)->Select();
+		for (int i = 0; i < carrito->GetLength(0); i++) {
+			this->dataSQL->actualizar_item_existencias(carrito[i]["CODIGO"]->ToString(), "-" + carrito[i]["CANTIDAD"]->ToString());
+		}
+		this->dataSQL->closeConnection();
+		this->update_txt_venta(this->txt_venta_id->Text);
+	}
 }
 
 System::Void SistemaVentaHardware::Form_Venta::txt_codigo_TextChanged(System::Object^ sender, System::EventArgs^ e)

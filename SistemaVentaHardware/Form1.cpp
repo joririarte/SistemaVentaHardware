@@ -4,8 +4,9 @@
 System::Void CppCLRWinFormsProject::Form1::updateTable()
 {
 	this->dataSQL->openConnection();
-	this->tabla->DataSource = this->dataSQL->getData();
+	items = this->dataSQL->getData();
 	this->dataSQL->closeConnection();
+	this->tabla->DataSource = items;
 }
 
 System::Void CppCLRWinFormsProject::Form1::updateComboBox_Tipos()
@@ -18,9 +19,9 @@ System::Void CppCLRWinFormsProject::Form1::updateComboBox_Tipos()
 	this->dataSQL->closeConnection();
 }
 
-System::Void CppCLRWinFormsProject::Form1::Item_Window(int mod)
+System::Void CppCLRWinFormsProject::Form1::Item_Window(int mod, DataRow^ row)
 {
-	SistemaVentaHardware::Item^ nueva_ventana_Item = gcnew SistemaVentaHardware::Item(mod, this->tabla,this->tipos);
+	SistemaVentaHardware::Item^ nueva_ventana_Item = gcnew SistemaVentaHardware::Item(mod, row ,this->tipos);
 	nueva_ventana_Item->ShowDialog();
 	this->updateTable();
 	delete nueva_ventana_Item;
@@ -35,17 +36,21 @@ System::Void CppCLRWinFormsProject::Form1::Form1_Load(System::Object^ sender, Sy
 
 System::Void CppCLRWinFormsProject::Form1::menuStock_nuevoItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	this->Item_Window(1);
+	this->tabla->Sort(this->tabla->Columns->GetFirstColumn(DataGridViewElementStates::Visible), ListSortDirection::Ascending);
+	DataRow^ row = items->Rows[items->Rows->Count - 1];
+	this->Item_Window(1,row);
 }
 
 System::Void CppCLRWinFormsProject::Form1::menuStock_modificar_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	this->Item_Window(2);
+	DataRow^ row = items->Rows[this->tabla->CurrentRow->Index];
+	this->Item_Window(2,row);
 }
 
 System::Void CppCLRWinFormsProject::Form1::menuStock_Eliminar_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	this->Item_Window(3);
+	DataRow^ row = items->Rows[this->tabla->CurrentRow->Index];
+	this->Item_Window(3,row);
 }
 
 System::Void CppCLRWinFormsProject::Form1::txt_descripcion_TextChanged(System::Object^ sender, System::EventArgs^ e)

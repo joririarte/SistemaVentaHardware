@@ -50,7 +50,7 @@ namespace CppCLRWinFormsProject {
 
 	private: System::Windows::Forms::DataGridView^ tabla;
 	private: DataTable^ tipos;
-
+	private: DataTable^ items;
 	private: MySQL_DB^ dataSQL;
 
 
@@ -285,7 +285,7 @@ namespace CppCLRWinFormsProject {
 		//FUNCIONES
 		private: System::Void updateTable();
 			   private: System::Void updateComboBox_Tipos();
-		private: System::Void Item_Window(int mod);
+		private: System::Void Item_Window(int mod,DataRow^ row);
 		//EVENTOS
 		private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e);
 		private: System::Void menuStock_nuevoItem_Click(System::Object^ sender, System::EventArgs^ e);

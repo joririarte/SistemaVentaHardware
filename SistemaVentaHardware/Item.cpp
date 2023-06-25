@@ -2,13 +2,13 @@
 #include "Item.h"
 
 //cambia los botones y rellena el formulario con los datos de una tabla segun un modo
-System::Void SistemaVentaHardware::Item::Modificar_Form(int mod, DataGridView^ data, DataTable^ tipos)
+System::Void SistemaVentaHardware::Item::Modificar_Form(int mod, DataRow^ data, DataTable^ tipos)
 {
 	switch (mod)
 	{
 	case 1: //Nuevo Item
 		this->btn_modificar->Visible = false;
-		this->txt_codigo->Text = (data->RowCount + 1).ToString();
+		this->txt_codigo->Text = (Int32::Parse(data[0]->ToString()) + 1).ToString();
 		this->Update_Combobox_Tipos(tipos);
 		this->comboBox_tipo->SelectedIndex = -1;
 		break;
@@ -16,6 +16,7 @@ System::Void SistemaVentaHardware::Item::Modificar_Form(int mod, DataGridView^ d
 		this->btn_agregar->Enabled = false;
 		this->btn_agregar->Visible = false;
 		this->btn_modificar->Location = System::Drawing::Point(348, 300);
+		this->comboBox_tipo->Enabled = false;
 
 		this->Update_Combobox_Tipos(tipos);
 		this->Llenar_Inputs(data);
@@ -24,7 +25,7 @@ System::Void SistemaVentaHardware::Item::Modificar_Form(int mod, DataGridView^ d
 		this->btn_agregar->Visible = false;
 		this->btn_modificar->Visible = false;
 		this->btn_eliminar->Visible = true;
-		this->txt_codigo->Enabled = true;
+		this->txt_codigo->Enabled = false;
 		this->txt_descripcion->Enabled = false;
 		this->txt_precio->Enabled = false;
 		this->txt_existencias->Enabled = false;
@@ -41,14 +42,14 @@ System::Void SistemaVentaHardware::Item::Modificar_Form(int mod, DataGridView^ d
 }
 
 //llena los inputs
-System::Void SistemaVentaHardware::Item::Llenar_Inputs(DataGridView^ data)
+System::Void SistemaVentaHardware::Item::Llenar_Inputs(DataRow^ data)
 {
-	this->txt_codigo->Text = data->CurrentRow->Cells[0]->Value->ToString();
-	this->txt_descripcion->Text = data->CurrentRow->Cells[1]->Value->ToString();
-	this->txt_precio->Text = data->CurrentRow->Cells[2]->Value->ToString()->Replace(',', '.');
-	this->comboBox_tipo->Text = data->CurrentRow->Cells[3]->Value->ToString();
-	this->txt_existencias->Text = data->CurrentRow->Cells[4]->Value->ToString();
-	this->txt_minima->Text = data->CurrentRow->Cells[5]->Value->ToString();
+	this->txt_codigo->Text = data[0]->ToString();
+	this->txt_descripcion->Text = data[1]->ToString();
+	this->txt_precio->Text = data[2]->ToString();
+	this->comboBox_tipo->Text = data[3]->ToString();
+	this->txt_existencias->Text = data[4]->ToString();
+	this->txt_minima->Text = data[5]->ToString();
 }
 
 System::Void SistemaVentaHardware::Item::Update_Combobox_Tipos(DataTable^ tipos)
