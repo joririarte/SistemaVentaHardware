@@ -182,3 +182,10 @@ System::Void SistemaVentaHardware::Form_Venta::comboBox_tipo_SelectedIndexChange
 	this->DGV_items->DataSource = dv;
 }
 
+System::Void SistemaVentaHardware::Form_Venta::ventaPresupuestoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	SistemaVentaHardware::Opciones_Venta_Presupuesto^ formOpciones = gcnew  SistemaVentaHardware::Opciones_Venta_Presupuesto();
+	formOpciones->ShowDialog();
+	delete formOpciones;
+}
+

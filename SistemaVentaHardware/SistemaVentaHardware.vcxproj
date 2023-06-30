@@ -146,6 +146,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MySQL_DB.h" />
+    <ClInclude Include="Opciones_Venta_Presupuesto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
@@ -158,6 +161,7 @@
     <ClCompile Include="Lista_Ventas.cpp" />
     <ClCompile Include="MainPage.cpp" />
     <ClCompile Include="MySQL_DB.cpp" />
+    <ClCompile Include="Opciones_Venta_Presupuesto.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -193,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opciones_Venta_Presupuesto.resx">
+      <DependentUpon>Opciones_Venta_Presupuesto.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

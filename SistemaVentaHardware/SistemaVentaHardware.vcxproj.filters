@@ -44,6 +44,9 @@
     <ClInclude Include="Lista_Ventas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Opciones_Venta_Presupuesto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinFormsProject.cpp">
@@ -71,6 +74,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Lista_Ventas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Opciones_Venta_Presupuesto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

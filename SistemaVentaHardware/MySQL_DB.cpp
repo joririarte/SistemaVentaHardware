@@ -133,3 +133,10 @@ String^ MySQL_DB::contar_carrito(String^ venta_id)
     cant = rows[0]["cantidad"]->ToString();
     return cant;
 }
+
+DataTable^ MySQL_DB::getOpciones(String^ presupuesto, String^ tolerancia)
+{
+    return this->get_Table("CALL LISTAR_OPCIONES(" + presupuesto + "," + tolerancia + ")");
+}
+
+

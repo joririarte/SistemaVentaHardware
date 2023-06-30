@@ -32,5 +32,7 @@ public:
 	bool agregar_al_carrito(String^, String^, String^);
 	bool eliminar_del_carrito(String^, String^);
 	String^ contar_carrito(String^);
+	//OPCIONES
+	DataTable^ getOpciones(String^ presupuesto, String^ tolerancia);
 };
 

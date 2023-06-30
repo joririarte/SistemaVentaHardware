@@ -1,6 +1,7 @@
 #pragma once
 #include "MySQL_DB.h"
 #include "Lista_Ventas.h"
+#include "Opciones_Venta_Presupuesto.h"
 
 namespace SistemaVentaHardware {
 
@@ -268,6 +269,7 @@ namespace SistemaVentaHardware {
 			this->ventaPresupuestoToolStripMenuItem->Name = L"ventaPresupuestoToolStripMenuItem";
 			this->ventaPresupuestoToolStripMenuItem->Size = System::Drawing::Size(209, 26);
 			this->ventaPresupuestoToolStripMenuItem->Text = L"Venta Presupuesto";
+			this->ventaPresupuestoToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form_Venta::ventaPresupuestoToolStripMenuItem_Click);
 			// 
 			// cerrarVentaToolStripMenuItem
 			// 
@@ -550,5 +552,6 @@ private: System::Void cerrarVentaToolStripMenuItem_Click(System::Object^ sender,
 private: System::Void txt_codigo_TextChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void txt_descripcion_TextChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void comboBox_tipo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ventaPresupuestoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
